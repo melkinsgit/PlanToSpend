@@ -1,0 +1,9 @@
+// data model
+
+date required - no default
+	ui - monthly bill
+
+description
+budgeted
+actual
+cash flow
