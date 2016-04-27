@@ -1,10 +1,13 @@
 // User.js defines a user record in DB
 
 var mongoose = require('mongoose');
+var Schema = mongoose.Schema;
 var bcrypt = require('bcrypt-nodejs');  // enables password encryption
 
-
-var userSchema = mongoose.Schema ({
+var userSchema = new Schema ({
+	_userid : {
+		type: Number,
+		ref: 'UserCats'},
 	local: {
 		username: String,
 		password: String
@@ -14,9 +17,7 @@ var userSchema = mongoose.Schema ({
 		type : Date,
 		default: Date.now()
 	},
-	
-	// favoriteColor : String,
-	// luckyNumber : Number
+	userCats : [{ type: Number, ref: 'UserCats' }]
 });
 
 userSchema.methods.generateHash = function(password){
@@ -29,7 +30,21 @@ userSchema.methods.validPassword = function(password){
 	return bcrypt.compareSync(password, this.local.password);
 };
 
-// mongoose.model turns it into a User object
+var userCatsSchema = new Schema ({
+	housing: String,
+	creditCards: [String],
+	utils: [String],
+	auto: String,
+	carIns: String,
+	mine: [String],
+	loans: [String],
+	savings: [String]
+});  // end Schema
+
+// mongoose.model turns it into a Category object
+var UserCats = mongoose.model('UserCats', userCatsSchema);
+// mongoose.model turns it into a Category object
 var User = mongoose.model('User', userSchema);
 
 module.exports = User;
+module.exports = UserCats;

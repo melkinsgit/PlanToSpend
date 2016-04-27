@@ -33,10 +33,9 @@ router.post('/enterOneLine', function(req, res, next){
 	console.log('first req.body');
 	console.log(req.body);
 	if (!req.body.actual){
+		req.body.actual = {};
 		req.body.actual.value = 0;
 	}
-	console.log('second req.body');
-	console.log(req.body);
 	newSpend.save(function (err, savedSpend) {
 		if (err) {
 			if (err.name == "ValidationError"){

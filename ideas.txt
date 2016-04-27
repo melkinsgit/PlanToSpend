@@ -10,3 +10,5 @@ cash flow
 
 appearance: button
 for css
+
+button inline to put buttons at end of line

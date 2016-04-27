@@ -55,10 +55,11 @@ module.exports = function(passport) {
     passwordField: 'password',
     passReqToCallback: true
   }, function (req, username, password, done) {
-
     //https://nodejs.org/api/process.html#process_process_nexttick_callback_arg
     //Once the current event loop turn runs to completion, call the callback function.
     process.nextTick(function () {
+		
+		console.log('in next tick user name is ' + username);
 
       //Search for user with this username.
       User.findOne({'local.username': username}, function (err, user) {
@@ -74,12 +75,16 @@ module.exports = function(passport) {
 
         //else, the username is available. Create a new user, and save to DB.
         var newUser = new User();
+		console.log('new user object');
+		console.log(newUser);
         newUser.local.username = username;
 		// generateHash ensures that actual password can't be read from database
 		// generateHash is defined in the user model, so it's called on the newUser
 		// generateHash takes the argument password and sets the local.password value
 		// that will be saved in the DB for the newUser to the hashed value
         newUser.local.password = newUser.generateHash(password);
+		console.log('this is the user object');
+		console.log(newUser);
 
         newUser.save(function (err) {
           if (err) {
