@@ -1,0 +1,16 @@
+// signup jade
+extends layout
+
+block content
+	h1  Welcome the Plan To Spend SignUp Page
+	h2 Sign up for an account
+	form(action='/signup' method='post')
+		label username
+		input(type='text' name='username' required)
+		br
+		label password
+		input(type='password' name='password' required)
+		br
+		input(type='submit' name='signup' value='Sign up')
+	| <p>If you already have an account you can <a href="/login">log in here</a></p>
+	

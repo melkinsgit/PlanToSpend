@@ -1,0 +1,29 @@
+// Listing of spends listing jade
+extends layout
+
+block content
+	form(action="/listing" method="get")
+		table
+			tr
+				th Date
+				th Description
+				th Category
+				th Budget
+				th Actual
+				th CashFlow
+				th Options
+					for spend in spends
+						tr
+							td #{spend.date.toLocaleDateString()}
+							td #{spend.description}
+							td #{spend.category} 
+							td #{spend.budget.value}
+							td #{spend.actual}
+							td #{+budget-100}
+							td
+								form(action='/doSomething' method='get')
+									input(type='submit' value='Button 1')
+								form(action='/doSomething' method='get')
+									input(type='submit' value='Button 2')
+								form(action='/doSomething' method='get')
+									input(type='submit' value='Button 3')

@@ -1,1 +1,27 @@
 // enter Data
+extends layout
+
+block content
+	h1 The enter data page
+	h2 Step 2:  Enter Your Spending Items
+	p
+		form(action="enterOneLine" method="post")
+			label Enter Anticipated Spending Date
+				input(type="date" name="date")
+			label Pick Category
+				if(categories.length === 0)
+					p You haven't picked your categories yet.
+				else
+					select(type="text" name="category")
+						each category in categories
+							option #{category}
+			label Description
+				input(type="text" name="description")
+			br
+			label Budgeted Amount - You won't be changing this, but don't worry! It doesn't have to be perfect.
+				input(type="text" name="budget")
+			br
+			input(type="submit" value="Enter Spend")
+	p
+		form(action='listing' method='get')
+			input(type='submit' value='Show Me My Spending')
