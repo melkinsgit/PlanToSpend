@@ -64,4 +64,6 @@ router.get('/defineSpend', function (req, res, next) {
 	res.render('defineSpend');
 }); // end of post
 
+/* GET choose cats page */
+
 module.exports = router;

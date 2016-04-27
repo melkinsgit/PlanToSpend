@@ -2,11 +2,10 @@
 extends layout
 block content
 	h1 Welcome the Plan To Spend Login Page
-	h2 Please Login or SignUp here
-	
+	h2 Login Here
 	//authentication error messages displayed here
-	if message.length>0
-		p=message
+	//if message.length>0
+		//p=message
 	form(action="/login" method="post")
 		label username
 		input(type='text' name='username' required)
@@ -15,4 +14,6 @@ block content
 		input(type='password' name='password' required)
 		br
 		input(type='submit' name='login_button' value='Login')
-	| <p>If you don't have an account you can <a href="/signup">sign up here</a></p>
+	h3  If it's your first visit, you can create an account here
+		form(action='/signup' method='get')
+				input(type='submit' value='SignUp')
