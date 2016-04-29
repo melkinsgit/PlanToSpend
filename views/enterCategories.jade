@@ -1,0 +1,78 @@
+// enter categories for Plan To Spend
+// The Categories model is:
+//	housing: String,
+//	creditCards: [String],
+//	utils: [String],
+//	carPayment: String, (don't need any user input - just yes no)
+//	carIns: String, (don't need any user input - just yes no)
+//	healthIns: String, (don't need any user input - just yes no)
+//	mine: [String],
+//	loans: [String],
+//	savings: [String]
+extends layout
+
+block content
+	h1 The define categories page
+	h2 Step 1:  Define Your Spending Categories
+	p
+		form(action="setCats" method="post")
+			// input(name="userName" value="#{local.username}" hidden)
+			h3 Housing
+			p TO DO Notes on housing
+				input(type="radio", name="housingOpt", value="mortgage", checked="")
+				| Mortgage
+				input(type="radio", name="housingOpt", value="rent", checked="")
+				| Rent
+			br
+			h3 Credit Cards
+			p Now you'll enter your credit cards. Enter a phrase that will remind you what bill you're paying. Either way, I always like to put the type of card (VISA, AMEX, MC, DINERS) in the name I choose. Here are a few ideas:
+				ul
+					li name the card after the person who uses it most: Ann's VISA
+					li name the card after the rewards type: Delta Miles AMEX
+					li name it after the bank if from: USBank VISA or CitiBank VISA
+					li remember to include all your cards: USBank VISA Debit
+			label Credit Card Names (enter up to 6 - you can add more later)
+				input(type="text" name="creditCard1")
+				input(type="text" name="creditCard2")
+				input(type="text" name="creditCard3")
+				input(type="text" name="creditCard4")
+				input(type="text" name="creditCard5")
+				input(type="text" name="creditCard6")
+			//br
+			//p Current Cards:
+				//ul
+					//if(card in category.creditCards.length===0)
+						//p No credit cards yet.
+					//else
+						//for card in category.creditCards
+					//li card goes here
+			//form(action="/addCreditCard", method="POST")
+				//label Add new card
+					//input(name="addCreditCard" type="text" required)
+				// input(name="name" value="4" hidden)
+				// input(type="submit" value="Add new card")
+			h3 Utilities
+			p TO DO Notes on utils
+			label Utilities like credit card
+				input(type="text" name="utility")
+			h3 Car Payment
+			p TO DO Notes on car payment
+			label Car Payment just input
+				input(type="text" name="carPayment")
+			br
+			label Car Insurance just input
+				input(type="text" name="carIns")
+			br
+			label Health Insurance just input
+				input(type="text" name="healtIns")
+			br
+			label Loans like credit card
+				input(type="text" name="loan")
+			br
+			label Savings like credit card
+				input(type="text" name="saving")
+			br
+			label My Own Categories like credit card
+				input(type="text" name="myCat")
+			br
+			input(type="submit" value="Save My Categories")

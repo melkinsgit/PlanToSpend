@@ -9,14 +9,6 @@ router.get('/listing', function(req, res, next) {
   Spend.find(function(err, spendDocs){
 	if (err) { return next(err); }
 	
-	for (var item in spendDocs){
-		console.log(item);
-		console.log(spendDocs[item].category);
-		console.log(spendDocs[item].date);
-		console.log(spendDocs[item].description);
-		console.log(spendDocs[item].budget.value);
-	}
-	
 	return res.render('listing', { spends: spendDocs, error: req.flash('error') });  // returns an array of JSON ojbects type Spend
   });
 });
@@ -29,13 +21,18 @@ router.get('/enterData', function (req, res, next) {
 }); // end of get
 
 router.post('/enterOneLine', function(req, res, next){
-	var newSpend = Spend(req.body);  // cast the req.body as a Spend object
-	console.log('first req.body');
-	console.log(req.body);
-	if (!req.body.actual){
-		req.body.actual = {};
-		req.body.actual.value = 0;
+	// cast the req.body as a Spend object
+	var newSpend = Spend(req.body);
+	console.log('just cast newspend');
+	console.log(newSpend);
+	if (!newSpend.actual){
+		console.log('there is no actual');
+		newSpend.actual = {};
+		newSpend.actual.value = '0';
 	}
+	console.log('just set actual to 0');
+	console.log(newSpend);
+	// save the complete object
 	newSpend.save(function (err, savedSpend) {
 		if (err) {
 			if (err.name == "ValidationError"){
@@ -49,6 +46,9 @@ router.post('/enterOneLine', function(req, res, next){
 			return next(err) ;
 		}
 		res.status (201);
+		console.log('actual saved');
+		console.log(savedSpend.budget.actual);
+		console.log(savedSpend.actual.value);
 		return res.redirect('/plans/enterData');  // redirects are absolute because each post and get is complete
 	} );
 });  // end of post

@@ -7,8 +7,9 @@ var userCatsSchema = new Schema ({
 	housing: String,
 	creditCards: [String],
 	utils: [String],
-	auto: String,
+	carPayment: String,
 	carIns: String,
+	healthIns: String,
 	mine: [String],
 	loans: [String],
 	savings: [String]

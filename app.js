@@ -15,7 +15,8 @@ var passport = require('passport');  // for request authentication - provides ab
 var routes = require('./routes/index');  // use routes to access index route js file
 var users = require('./routes/users');  // use users to access users route js file
 var plans = require('./routes/plans');  // use plans to access plans route js file
-var enterData = require('./routes/enterData');  // use security to access security route js file
+var enterData = require('./routes/enterData');  // use enterData to access enterData route js file
+var cats = require('./routes/cats');  // use cats to access cats route js file
 
 // connect to Mongoose db
 var db = mongoose.connect('mongodb://localhost:27017/spendrecords');
@@ -50,6 +51,8 @@ app.use('/', routes);
 app.use('/users', users);
 app.use('/plans', plans);
 app.use('/enterData', enterData);
+
+app.use('/cats', cats);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -6,24 +6,29 @@ block content
 		table
 			tr
 				th Date
+				th Payee
 				th Description
 				th Category
 				th Budget
 				th Actual
 				th CashFlow
 				th Options
+				if(spends.length===0)
+					p You haven't entered an items in your spending plan yet.
+				else
 					for spend in spends
 						tr
 							td #{spend.date.toLocaleDateString()}
+							td #{spend.payee}
 							td #{spend.description}
 							td #{spend.category} 
 							td #{spend.budget.value}
-							td #{spend.actual}
-							td #{+budget-100}
+							td #{spend.actual.value}
+							td Cash Flow
 							td
 								form(action='/doSomething' method='get')
-									input(type='submit' value='Button 1')
+									input(type='submit' value='Update')
 								form(action='/doSomething' method='get')
-									input(type='submit' value='Button 2')
+									input(type='submit' value='Delete')
 								form(action='/doSomething' method='get')
-									input(type='submit' value='Button 3')
+									input(type='submit' value='Duplicate')

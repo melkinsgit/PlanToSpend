@@ -1,0 +1,12 @@
+// update categories
+extends layout
+
+block content
+
+// for adding a credit card
+	p
+		form(action="/addCreditCard", method="POST")
+			label Add a Credit Card
+				input(name="creditCardName" type="text" required)
+			input(name="addCars" type="submit" value="Add Credit Card")
+
