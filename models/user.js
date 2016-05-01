@@ -17,7 +17,16 @@ var userSchema = new Schema ({
 		default: Date.now()
 	},
 	
-	thisUserCats : [UserCats]
+	thisUserCats : {
+		housing: String,
+		creditCards: [String],
+		utils: [String],
+		carPayment: String,
+		carIns: String,
+		healthIns: String,
+		mine: [String],
+		loans: [String],
+		savings: [String]}
 });
 
 userSchema.methods.generateHash = function(password){

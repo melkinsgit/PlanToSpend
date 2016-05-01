@@ -4,3 +4,9 @@ block content
 	h1= message
 	h2= error.status
 	pre #{error.stack}
+	
+	hr
+	footer
+		include navigation
+		form(action='/logout' method='get')
+			input(type="submit" value="Logout")

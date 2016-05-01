@@ -3,3 +3,10 @@ extends layout
 
 block content
 	h1 This is the See Plan Jade
+	
+hr
+footer
+	include navigation
+	form(action='/logout' method='get')
+		input(type="submit" value="Logout")
+	

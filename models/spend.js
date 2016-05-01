@@ -17,7 +17,7 @@ var SchemaTypes = mongoose.Schema.Types;
 /* spending plan db - records date of planned spending, description of same, planned amount and actual amount (when this is entered the spend date may be udpated) */
 
 var spendSchema = new Schema ({
-	date: Date,
+	date: {type : Date, default: Date.now()},
 	payee: String,
 	description: String,
 	budget : {type: SchemaTypes.Double},

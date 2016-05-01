@@ -12,3 +12,8 @@ block content
 			a(href='/plans/defineSpend') Plan to Spend
 	form(action='plans/listing' method='get')
 		input(type='submit' value='Show Me My Spending')
+	hr
+	footer
+		include navigation
+		form(action='/logout' method='get')
+			input(type="submit" value="Logout")

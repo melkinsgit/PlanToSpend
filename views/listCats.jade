@@ -1,0 +1,57 @@
+// list cats jade
+extends layout
+
+// The Categories model is:
+//	housing: String,
+//	creditCards: [String],
+//	utils: [String],
+//	carPayment: String, (don't need any user input - just yes no)
+//	carIns: String, (don't need any user input - just yes no)
+//	healthIns: String, (don't need any user input - just yes no)
+//	mine: [String],
+//	loans: [String],
+//	savings: [String]
+
+block content
+	form(action="/showCats" method="get")
+	if(userCats.length===0)
+		p You haven't entered any items in your spending plan yet.
+	else
+		ul These are the categories you have chosen
+			for cat in userCats
+				li Housing: #{cat.housing}
+				li Utilities:
+					ul
+						if(cat.utils.length===0)
+							li No loans
+						else
+							for util in cat.utils
+								li #{utils}
+				li Car Payment: #{cat.carPayment} 
+				li Car Insurance: #{cat.carIns}
+				li Health Insurance: #{cat.healthIns}
+				li Your Categories:
+					ul
+						for me in cat.mine
+							li #{me}
+				li Credit Cards:
+					ul
+						for card in cat.creditCards
+							li #{card}
+				li Loans:
+					ul
+						-if(cat.loans.length===0)
+							li No loans
+						-else
+							for loan in cat.loans
+								li #{loan}
+				li Savings:
+					ul
+						for saving in cat.savings
+							li #{saving}
+			
+	hr
+	footer
+		include navigation
+		form(action='/logout' method='get')
+			input(type="submit" value="Logout")

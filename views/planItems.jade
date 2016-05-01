@@ -2,3 +2,9 @@ extends layout
 
 block content
 	h1 Plan Items So Far ...
+	
+	hr
+	footer
+		include navigation
+		form(action='/logout' method='get')
+			input(type="submit" value="Logout")

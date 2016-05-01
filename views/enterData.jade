@@ -23,7 +23,14 @@ block content
 			label Budgeted Amount - You won't be changing this, but don't worry! It doesn't have to be perfect.
 				input(type="text" name="budget")
 			br
+			input(type='text' name='username' hidden)
 			input(type="submit" value="Enter Spend")
 	p
 		form(action='listing' method='get')
 			input(type='submit' value='Show Me My Spending')
+			
+	hr
+	footer
+		include navigation
+		form(action='/logout' method='get')
+			input(type="submit" value="Logout")

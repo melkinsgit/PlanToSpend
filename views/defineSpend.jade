@@ -4,3 +4,9 @@ extends layout
 block content
 
 	h1 Decide How You Want to Spend Your Money
+	
+	hr
+	footer
+		include navigation
+		form(action='/logout' method='get')
+			input(type="submit" value="Logout")

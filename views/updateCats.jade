@@ -9,4 +9,10 @@ block content
 			label Add a Credit Card
 				input(name="creditCardName" type="text" required)
 			input(name="addCars" type="submit" value="Add Credit Card")
+			
+	hr
+	footer
+		include navigation
+		form(action='/logout' method='get')
+			input(type="submit" value="Logout")
 

@@ -65,12 +65,12 @@ res.redirect ends the request handling for this request,
 so the route handler that uses this middleware (in this example, GET /secret) never runs.
  */
 
-// function isLoggedIn(req, res, next){
-	// if (req.isAuthenticated()){
-		// return next();
-  // }
-  // res.redirect('/');
-// }
+function isLoggedIn(req, res, next){
+	if (req.isAuthenticated()){
+		return next();
+  }
+  res.redirect('/');
+}
 
 // Get login page
 router.get('/login', function(req, res, next){

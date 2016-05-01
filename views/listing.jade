@@ -17,7 +17,7 @@ block content
 					p You haven't entered an items in your spending plan yet.
 				else
 					for spend in spends
-						tr
+						tr.spendingRow
 							td #{spend.date.toLocaleDateString()}
 							td #{spend.payee}
 							td #{spend.description}
@@ -32,3 +32,9 @@ block content
 									input(type='submit' value='Delete')
 								form(action='/doSomething' method='get')
 									input(type='submit' value='Duplicate')
+									
+	hr
+	footer
+		include navigation
+		form(action='/logout' method='get')
+			input(type="submit" value="Logout")
