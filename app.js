@@ -17,7 +17,7 @@ var users = require('./routes/users');  // use users to access users route js fi
 var plans = require('./routes/plans');  // use plans to access plans route js file
 var enterData = require('./routes/enterData');  // use enterData to access enterData route js file
 var cats = require('./routes/cats');  // use cats to access cats route js file
-
+var planmain = require('./routes/planmain');
 // connect to Mongoose db
 var db = mongoose.connect('mongodb://localhost:27017/spendrecords');
 
@@ -26,12 +26,13 @@ var app = express();
 require('./config/passport')(passport);  // use passport
 // passport.js module.export exports a function
 // that expects to a passport object as an argument
-// this require statement calls the function 
+// this require statement calls the function
 // (defined in the passport file in config) with the
 // passport object required in line 10
- 
-app.use(passport.initialize());  // use passport
 app.use(session({ 'secret' : 'something random'}) );  // use passport
+
+app.use(passport.initialize());  // use passport
+app.use(passport.session())
 app.use(flash());  // use connect-flash
 
 // view engine setup
@@ -52,7 +53,12 @@ app.use('/users', users);
 app.use('/plans', plans);
 app.use('/enterData', enterData);
 
+app.use('/planmain', planmain);  //TODO rename?
+
+isLoggedIn = require('./middleware/isLoggedIn');
+app.use('/cats', isLoggedIn);
 app.use('/cats', cats);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

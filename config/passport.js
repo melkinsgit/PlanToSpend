@@ -58,7 +58,7 @@ module.exports = function(passport) {
     //https://nodejs.org/api/process.html#process_process_nexttick_callback_arg
     //Once the current event loop turn runs to completion, call the callback function.
     process.nextTick(function () {
-		
+
 		console.log('in next tick user name is ' + username);
 
       //Search for user with this username.
@@ -106,7 +106,7 @@ module.exports = function(passport) {
 
     function(req, username, password, done){
       process.nextTick(function() {
-		  
+
 		// find the user, this time we want the user to exist or they're logging in with the wrong info
         User.findOne({'local.username': username}, function (err, user) {
 
@@ -120,8 +120,11 @@ module.exports = function(passport) {
           if (!user.validPassword(password)) {
             return done(null, false, req.flash('loginMessage', 'Wrong password'));
           }
-		  
+
 		  // this user is now signed in
+      console.log('this user is signed in')
+      console.log(user)
+
           return done(null, user);
         })
       });
