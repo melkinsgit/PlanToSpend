@@ -1,5 +1,16 @@
 TO DO
 
-- figure out how to pass user
+NEED TO HAVE
+- figure out how to pass user (then add category to user)
+- user input errors in enterData - actual and budget
+- make dashboard
+- make plan spending page
+- clean up look
+- fix Categories
+- update spend
+- delete spend
+- add array element in category
+- update category (can include add above)
 
+NICE TO HAVE
 - figure out how to get category data entry for arrays - form in form

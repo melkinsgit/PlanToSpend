@@ -22,7 +22,8 @@ var spendSchema = new Schema ({
 	description: String,
 	budget : {type: SchemaTypes.Double},
 	actual : {type: SchemaTypes.Double},
-	category: String
+	category: String,
+	cashFlow: {type: SchemaTypes.Double}
 });  // end Schema
 
 // mongoose.model turns it into a Spend object
