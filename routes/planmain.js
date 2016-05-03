@@ -3,10 +3,7 @@ var express = require('express');
 var router = express.Router();
 
 
-/* GET signup page - can't get message anymore */
-router.get('/signup', function (req, res, next) {
-	res.render('signup', {message: req.flash('signupMessage')})
-});
+
 
 /* GET signup page - can't get message anymore */
 router.get('/planMain', function (req, res, next) {

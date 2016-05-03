@@ -10,10 +10,15 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Plan To Spend' });
 });  // end get
 
+/* GET signup page - can't get message anymore */
+router.get('/signup', function (req, res, next) {
+	res.render('signup', {message: req.flash('signupMessage')})
+});
+
 
 // POST what happens when user clicks signup button
 router.post('/signup', passport.authenticate('local-signup', {
-	successRedirect: '/seePlan',
+	successRedirect: 'planmain/seePlan',
 	failureRedirect: '/signup',
 	failureFlash: true
 }));
@@ -47,7 +52,7 @@ router.get('/login', function(req, res, next){
 
 // Post login - when clicking login button - what's supposed to happen
 router.post('/login', passport.authenticate('local-login', {
-	successRedirect: '/planMain',
+	successRedirect: 'planmain/planMain',
 	failureRedirect: '/login',
 	failureFlash: true
 }));
