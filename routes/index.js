@@ -17,9 +17,14 @@ router.post('/planMain', function (req, res, next) {
 	res.render('planMain');
 }); // end of post
 
+/* GET signup page - can't get message anymore */
+router.get('/signup', function (req, res, next) {
+	res.render('signup', {message: req.flash('signupMessage')})
+});
+
 // POST what happens when user clicks signup button
 router.post('/signup', passport.authenticate('local-signup', {
-	successRedirect: '/planmain/seePlan',
+	successRedirect: '/planmain/planMain',
 	failureRedirect: '/signup',
 	failureFlash: true
 }));
