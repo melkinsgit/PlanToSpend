@@ -34,10 +34,12 @@ require('./config/passport')(passport);  // use passport
 // (defined in the passport file in config) with the
 // passport object required in line 10
  
-app.use(passport.initialize());  // use passport
 app.use(session({ 'secret' : 'something random'}) );  // use passport
+
+app.use(passport.initialize());  // use passport
 app.use(passport.session());  // keep track of login session
 app.use(flash());  // use connect-flash
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));  // using path to define view engine - engine for views files created using express
@@ -54,13 +56,15 @@ app.use(express.static(path.join(__dirname, 'public')));  // using path
 // using various route vars previously defines
 app.use('/', routes);
 app.use('/users', users);
+app.use('/enterData', enterData);  // I believe this is never used
+
+app.use('/plans', isLoggedIn);
 app.use('/plans', plans);
-app.use('/enterData', enterData);
 
 app.use('/planmain', isLoggedIn);
 app.use('/planmain', planmain);
 
-// app.use('/cats', isLoggedIn);
+app.use('/cats', isLoggedIn);
 app.use('/cats', cats);
 
 // catch 404 and forward to error handler
