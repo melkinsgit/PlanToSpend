@@ -57,10 +57,10 @@ app.use('/users', users);
 app.use('/plans', plans);
 app.use('/enterData', enterData);
 
-app.use('/planmain', isLoggedIn);
+//app.use('/planmain', isLoggedIn);
 app.use('/planmain', planmain);
 
-app.use('/cats', isLoggedIn);
+// app.use('/cats', isLoggedIn);
 app.use('/cats', cats);
 
 // catch 404 and forward to error handler

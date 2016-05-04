@@ -20,6 +20,8 @@ NEED TO HAVE
 	- add a button
 	- on submit you search for the array name
 	- adding read size of array and increment from them (after last child)
+	
+-
 
 NICE TO HAVE
 - figure out how to get category data entry for arrays - form in form - use javascript for a button that adds a new whatever - look in birds in javascript

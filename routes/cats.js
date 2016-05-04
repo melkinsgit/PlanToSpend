@@ -2,7 +2,7 @@
 
 var express = require('express');
 var router = express.Router();
-var passport = require('passport');
+// var passport = require('passport');
 
 var UserCats = require('../models/userCats.js');
 var User = require('../models/user.js');
