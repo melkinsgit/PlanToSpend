@@ -2,12 +2,14 @@
 
 var express = require('express');
 var router = express.Router();
+var passport = require('passport');
 
 var UserCats = require('../models/userCats.js');
 var User = require('../models/user.js');
 
 /* GET the blank form page for entering categories */
 router.get('/chooseCats', function (req, res, next) {
+	console.log(req.user);
 	res.render('enterCategories');  // do I need to send the user to the page
 }); // end of get
 

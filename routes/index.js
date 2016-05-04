@@ -11,9 +11,15 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Plan To Spend' });
 });  // end get
 
+/* POST planMain page */
+router.post('/planMain', function (req, res, next) {
+	// res.render('login');
+	res.render('planMain');
+}); // end of post
+
 // POST what happens when user clicks signup button
 router.post('/signup', passport.authenticate('local-signup', {
-	successRedirect: '/seePlan',
+	successRedirect: '/planmain/seePlan',
 	failureRedirect: '/signup',
 	failureFlash: true
 }));
@@ -52,7 +58,7 @@ router.get('/login', function(req, res, next){
 
 // Post login - when clicking login button - what's supposed to happen
 router.post('/login', passport.authenticate('local-login', {
-	successRedirect: '/planMain',  // is req.user for this now set to the user?
+	successRedirect: '/planmain/planMain',  // is req.user for this now set to the user?
 	failureRedirect: '/login',
 	failureFlash: true
 }));

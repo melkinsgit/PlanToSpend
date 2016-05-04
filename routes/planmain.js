@@ -22,12 +22,6 @@ router.get('/signup', function (req, res, next) {
 	res.render('signup', {message: req.flash('signupMessage')})
 });
 
-/* POST planMain page */
-router.post('/planMain', function (req, res, next) {
-	res.render('login');
-	// res.render('planMain');
-}); // end of post
-
 /* POST see current plan */
 router.post('/seePlan', function (req, res, next){
 	Spend.find(function(err, spendDocs){
