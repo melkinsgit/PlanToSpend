@@ -18,6 +18,10 @@ var plans = require('./routes/plans');  // use plans to access plans route js fi
 var enterData = require('./routes/enterData');  // use enterData to access enterData route js file
 var cats = require('./routes/cats');  // use cats to access cats route js file
 
+var planmain = require('./routes/planmain');  // planmain is a route than handles all the plan main menu items
+
+var isLoggedIn = require('./middleware/isLoggedIn');
+
 // connect to Mongoose db
 var db = mongoose.connect('mongodb://localhost:27017/spendrecords');
 
@@ -32,6 +36,7 @@ require('./config/passport')(passport);  // use passport
  
 app.use(passport.initialize());  // use passport
 app.use(session({ 'secret' : 'something random'}) );  // use passport
+app.use(passport.session());  // keep track of login session
 app.use(flash());  // use connect-flash
 
 // view engine setup
@@ -52,6 +57,7 @@ app.use('/users', users);
 app.use('/plans', plans);
 app.use('/enterData', enterData);
 
+app.use('/cats', isLoggedIn);
 app.use('/cats', cats);
 
 // catch 404 and forward to error handler

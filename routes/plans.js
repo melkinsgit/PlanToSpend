@@ -18,13 +18,13 @@ router.get('/listing', function(req, res, next) {
 			if(spendDocs[spend].actual.value==0)
 			{
 				console.log(spendDocs[spend].budget.value);
-				spendDocs[spend].cashFlow.value = cFlow1-spendDocs[spend].budget.value;
+				spendDocs[spend].cashFlow.value = cFlow1 + Number(spendDocs[spend].budget.value);
 			}
 			else
 			{
-				spendDocs[spend].cashFlow.value = cFlow1 - spendDocs[spend].actual.value;
+				spendDocs[spend].cashFlow.value = cFlow1 + Number(spendDocs[spend].actual.value);
 			}
-			cFlow1 = spendDocs[spend].cashFlow.value;
+			cFlow1 = Number(spendDocs[spend].cashFlow.value);
 		}
 		return res.render('listing', { spends: spendDocs, startCash: '1000', error: req.flash('error') });  // returns an array of JSON ojbects type Spend
   });

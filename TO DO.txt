@@ -3,6 +3,8 @@ TO DO
 NEED TO HAVE
 - figure out how to pass user (then add category to user)
 - user input errors in enterData - actual and budget
+	- Number - I'll NaN
+	- input type number
 - make dashboard
 - make plan spending page
 - clean up look
@@ -11,6 +13,13 @@ NEED TO HAVE
 - delete spend
 - add array element in category
 - update category (can include add above)
+- set categories include income
+
+- button for adding array features
+	- city form jade, data js
+	- add a button
+	- on submit you search for the array name
+	- adding read size of array and increment from them (after last child)
 
 NICE TO HAVE
-- figure out how to get category data entry for arrays - form in form
+- figure out how to get category data entry for arrays - form in form - use javascript for a button that adds a new whatever - look in birds in javascript

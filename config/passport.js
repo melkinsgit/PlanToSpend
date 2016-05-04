@@ -108,6 +108,7 @@ module.exports = function(passport) {
       process.nextTick(function() {
 		  
 		// find the user, this time we want the user to exist or they're logging in with the wrong info
+		// see if there is a user object with the local.username == the username passed to local-login
         User.findOne({'local.username': username}, function (err, user) {
 
           if (err) {

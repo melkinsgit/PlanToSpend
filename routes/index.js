@@ -1,42 +1,15 @@
+// index js handles sign up, login and logout
+
 var express = require('express');
 var router = express.Router();
 var passport = require('passport');
 
-var Spend = require('../models/spend.js');
+//var Spend = require('../models/spend.js');
 
 /* GET home page. renders index jade */
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Plan To Spend' });
 });  // end get
-
-/* GET seePlan */
-router.get('/seePlan', function (req, res, next){
-	res.render('seePlan');
-});
-
-/* GET signup page - can't get message anymore */
-router.get('/signup', function (req, res, next) {
-	res.render('signup', {message: req.flash('signupMessage')})
-});
-
-/* GET signup page - can't get message anymore */
-router.get('/planMain', function (req, res, next) {
-	res.render('planMain', {message: req.flash('signupMessage')})
-});
-
-/* POST planMain page */
-router.post('/planMain', function (req, res, next) {
-	res.render('login');
-	// res.render('planMain');
-}); // end of post
-
-/* POST see current plan */
-router.post('/seePlan', function (req, res, next){
-	Spend.find(function(err, spendDocs){
-	if (err) { return next(err); }
-	return res.render('index', { spends: spendDocs, error: req.flash('error') });  // returns an array of JSON ojbects type Spend called spends; planItems.jade deals with spends, displaying them etc.
-  });
-}); // end of post
 
 // POST what happens when user clicks signup button
 router.post('/signup', passport.authenticate('local-signup', {
@@ -65,12 +38,12 @@ res.redirect ends the request handling for this request,
 so the route handler that uses this middleware (in this example, GET /secret) never runs.
  */
 
-function isLoggedIn(req, res, next){
-	if (req.isAuthenticated()){
-		return next();
-  }
-  res.redirect('/');
-}
+// function isLoggedIn(req, res, next){
+	// if (req.isAuthenticated()){
+		// return next();
+  // }
+  // res.redirect('/');
+// }
 
 // Get login page
 router.get('/login', function(req, res, next){
@@ -79,7 +52,7 @@ router.get('/login', function(req, res, next){
 
 // Post login - when clicking login button - what's supposed to happen
 router.post('/login', passport.authenticate('local-login', {
-	successRedirect: '/planMain',
+	successRedirect: '/planMain',  // is req.user for this now set to the user?
 	failureRedirect: '/login',
 	failureFlash: true
 }));
