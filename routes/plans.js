@@ -8,12 +8,12 @@ var User = require('../models/user.js');
 
 /* GET listing page. */
 router.get('/listing', function(req, res, next) {
-	
+
 	var username = req.user.local.username;
-	
+
 	Spend.find( { } ).sort ({'date' : 1 }).exec(function(err, spendDocs){
-		if (err) { 
-			return next(err); 
+		if (err) {
+			return next(err);
 		}
 		var cFlow1 = 1000;
 		for(var spend in spendDocs){
@@ -34,23 +34,24 @@ router.get('/listing', function(req, res, next) {
 
 /* GET enterData page */
 router.get('/enterData', function (req, res, next) {
-	
+
 	// find the user's categories
-	
+
 	var username = req.user.local.username;
 	console.log('should be NAME user is ************************');
 	console.log(username);
-	
-	
+
+
 	// var Categories=["Option1", "Option2", "Option3"];
 		// res.render('enterData', {categories: Categories});
-	
+
 	UserCats.findOne({'catsUser': username}, function (err, foundUserCats) {
 		if (err) {
           return next(err);    //database error
         }
 		if(!foundUserCats){
 			console.log('did not get a user from ' + username);
+			return next(err);
 		}
         // Check to see if there is already a user with that username
         if (foundUserCats) {
@@ -58,18 +59,40 @@ router.get('/enterData', function (req, res, next) {
         }
 		// var Categories = user.local.thisUserCats;
 		// var Categories=["Option1", "Option2", "Option3"];
-		var catsToList = JSON.parse(foundUserCats);
-		
-		for (var cat in catsToList){
-			console.log('exploring array from found user cats');
-			console.log(catsToList[cat]);
-			//catsToList.push(foundUserCats[cat]);
+		console.log(foundUserCats);
+
+
+		var catsToList = [];
+
+console.log('---------------------')
+
+		var fields = Object.keys(foundUserCats);
+		console.log(fields);
+
+		for(var i = 0; i < fields.length; i++) {
+				console.log(fields[i]);
+		    console.log(foundUserCats[fields[i]]);
 		}
-		
+
+		console.log('---------------------')
+
+
+		for  ( cat in foundUserCats._doc){
+
+
+			console.log('exploring array from found user cats');
+			console.log(foundUserCats[cat]);
+			//catsToList.push(foundUserCats[cat]);
+			//todo put in array
+			//todo ignore user's id.
+		}
+
 		console.log("trying to id the found user cats");
-		console.log(catsToList);
-		res.render('enterData', {categories: catsToList});
-	});
+		console.log(foundUserCats);
+
+		res.render('enterData', {categories: foundUserCats});
+
+	 });
 }); // end of get
 
 router.post('/enterOneLine', function(req, res, next){
@@ -77,7 +100,7 @@ router.post('/enterOneLine', function(req, res, next){
 	var newSpend = Spend(req.body);
 	newSpend.spendUser = req.user.local.username;
 	var thisUser = req.user;
-	
+
 	// these could also be default 0 in the model
 	if (!newSpend.actual){
 		newSpend.actual = {};
@@ -92,7 +115,7 @@ router.post('/enterOneLine', function(req, res, next){
 		console.log('the date for doc is ' + newSpend.date);
 	}
 	newSpend.cashFlow='0';
-	
+
 	// save the complete object
 	newSpend.save(function (err, savedSpend) {
 		if (err) {
