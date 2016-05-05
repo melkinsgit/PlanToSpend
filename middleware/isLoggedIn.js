@@ -1,12 +1,12 @@
 // is logged in middleware
 
 function isLoggedIn(req, res, next){
-	console.log('*****************');
-	console.log(req.user);
 	if (req.isAuthenticated()){
 		return next();
   }
+  console.log('this user is NOT logged in');
+  console.log(req.user);
   res.redirect('/');
 }
 
-module.exports = isLoggedIn
+module.exports = isLoggedIn;

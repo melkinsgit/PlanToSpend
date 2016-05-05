@@ -4,6 +4,7 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var userCatsSchema = new Schema ({
+	catsUser: String,
 	housing: String,
 	creditCards: [String],
 	utils: [String],

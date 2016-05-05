@@ -55,7 +55,7 @@ app.use(express.static(path.join(__dirname, 'public')));  // using path
 
 // using various route vars previously defines
 app.use('/', routes);
-app.use('/users', users);
+app.use('/users', users);  // I believe this is never used
 app.use('/enterData', enterData);  // I believe this is never used
 
 app.use('/plans', isLoggedIn);
