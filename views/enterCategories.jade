@@ -16,29 +16,75 @@ block content
 	h2 Step 1:  Define Your Spending Categories
 	p
 		form(action="setCats" method="post")
-			// input(name="userName" value="#{local.username}" hidden)
+			h3 Income
+			p
+			label Income (up to 5)
+				ul
+					li 
+						input(type="text" name="income1")
+					li 
+						input(type="text" name="income2")
+					li 
+						input(type="text" name="income3")
+					li 
+						input(type="text" name="income4")
+					li 
+						input(type="text" name="income5")
 			h3 Housing
-			p TO DO Notes on housing
+			p
 			input(type="radio", name="housing", value="mortgage", checked="")
 			| Mortgage
 			input(type="radio", name="housing", value="rent", checked="")
 			| Rent
 			h3 Utilities
-			p TO DO Notes on utils
-			label Utilities like credit card
-				input(type="text" name="utility")
+			p
+			label Utilities(up to 4)
+				ul
+					li 
+						input(type="text" name="util1")
+					li 
+						input(type="text" name="util2")
+					li 
+						input(type="text" name="util3")
+					li 
+						input(type="text" name="util4")
 			h3 Car Payment
-			p TO DO Notes on car payment
-			label Car Payment just input
-				input(type="text" name="carPayment")
+			p
+			label Car Payment(up to 3)
+				ul
+					li 
+						input(type="text" name="carPayment1")
+					li 
+						input(type="text" name="carPayment2")
+					li 
+						input(type="text" name="carPayment3")
 			h3 Car Insurance
-			p TO DO Notes on car ins
-			label Car Insurance just input
-				input(type="text" name="carIns")
+			p
+			label Car Insurance(up to 3)
+				ul
+					li 
+						input(type="text" name="carIns1")
+					li 
+						input(type="text" name="carIns2")
+					li 
+						input(type="text" name="carIns3")
 			h3 Health Insurance
-			p TO DO Notes on healtIns
-			label Health Insurance just input
+			p
+			label Health Insurance
 				input(type="text" name="healthIns")
+			h3 Health Insurance
+			p
+			label Medical (up to 2)
+				ul 
+					li 
+						input(type="text" name="medical1")
+					li 
+						input(type='text' name='medical2')
+			h3 Dental
+			p
+			label Health Insurance
+				input(type="text" name="dental")
+			
 			h3 Credit Cards
 			p Now you'll enter your credit cards. Enter a phrase that will remind you what bill you're paying. Either way, I always like to put the type of card (VISA, AMEX, MC, DINERS) in the name I choose. Here are a few ideas:
 				ul
@@ -46,37 +92,60 @@ block content
 					li name the card after the rewards type: Delta Miles AMEX
 					li name it after the bank if from: USBank VISA or CitiBank VISA
 					li remember to include all your cards: USBank VISA Debit
-			label Credit Card Names (enter up to 6 - you can add more later)
-				input(type="text" name="creditCard1")
-				input(type="text" name="creditCard2")
-				input(type="text" name="creditCard3")
-				input(type="text" name="creditCard4")
-				input(type="text" name="creditCard5")
-				input(type="text" name="creditCard6")
-			//br
-			//p Current Cards:
-				//ul
-					//if(card in category.creditCards.length===0)
-						//p No credit cards yet.
-					//else
-						//for card in category.creditCards
-					//li card goes here
-			//form(action="/addCreditCard", method="POST")
-				//label Add new card
-					//input(name="addCreditCard" type="text" required)
-				// input(name="name" value="4" hidden)
-				// input(type="submit" value="Add new card")h3 Loans
-			p TO DO Notes on loans
-			label Loans like credit card
-				input(type="text" name="loan")
+			label Credit Card Names (up to 4)
+				ul
+					li 
+						input(type="text" name="creditCard1")
+					li 
+						input(type="text" name="creditCard2")
+					li 
+						input(type="text" name="creditCard3")
+					li 
+						input(type="text" name="creditCard4")
+			h3 Loans
+			p
+			label Loans(up to 4)
+				ul
+					li 
+						input(type="text" name="loan1")
+					li 
+						input(type="text" name="loan2")
+					li 
+						input(type="text" name="loan3")
+					li 
+						input(type="text" name="loan4")
 			h3 Savings
-			p TO DO Notes on savings
-			label Savings like credit card
-				input(type="text" name="saving")
+			p
+			label Savings(up to 5)
+				li input(type="text" name="taxPayment")
+			h3 Savings
+			p
+			label Savings(up to 5)
+				ul
+					li 
+						input(type="text" name="saving1")
+					li 
+						input(type="text" name="saving2")
+					li 
+						input(type="text" name="saving3")
+					li 
+						input(type="text" name="saving4")
+					li 
+						input(type="text" name="saving5")
 			h3 Your Categories
-			p TO DO Notes on your cats
-			label My Own Categories like credit card
-				input(type="text" name="myCat")
+			p
+			label My Own Categories(up to 5)
+				ul
+					li 
+						input(type="text" name="mine1")
+					li 
+						input(type="text" name="mine2")
+					li 
+						input(type="text" name="mine3")
+					li 
+						input(type="text" name="mine4")
+					li 
+						input(type="text" name="mine5")
 			br
 			input(type="submit" value="Save My Categories")
 			

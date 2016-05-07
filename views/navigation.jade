@@ -1,15 +1,21 @@
 // navigation to be included in all 
 block navigation
+	form(action='/plans/listing' method='get')
+		input(type='submit' value='Show Me My Spending')
 
-	ul
-		li
-			a(href="/plans/enterData") Add Some Spending
-		li
-			a(href="/plans/dataDashboard") Show Me My Dashboard
-		li
-			a(href="/plans/defineSpend") Do Some Spending
-	ul
+	ul Categories
 		li
 			a(href='/cats/chooseCats') Choose Categories
 		li
 			a(href='/cats/showCats') Show Categories
+	ul Spending
+		li
+			a(href="/plans/defineSpend") Do Some Spending
+	ul Planning
+		li
+			a(href="/plans/enterData") Add Some Spending
+		li
+			a(href="/plans/dataDashboard") Show Me My Dashboard
+			
+	
+	

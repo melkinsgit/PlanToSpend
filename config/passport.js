@@ -58,8 +58,6 @@ module.exports = function(passport) {
     //https://nodejs.org/api/process.html#process_process_nexttick_callback_arg
     //Once the current event loop turn runs to completion, call the callback function.
     process.nextTick(function () {
-		
-		console.log('in next tick user name is ' + username);
 
       //Search for user with this username.
       User.findOne({'local.username': username}, function (err, user) {
@@ -70,7 +68,7 @@ module.exports = function(passport) {
         //Check to see if there is already a user with that username
         if (user) {
           console.log('user with that name exists');
-          return done(null, false, req.flash('signupMessage', 'Sorry, username already taken'));
+          return done(null, false, req.flash('signupMessage', 'Sorry, username is already taken. Please try again.'));
         }
 
         //else, the username is available. Create a new user, and save to DB.

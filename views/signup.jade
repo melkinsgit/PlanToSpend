@@ -5,6 +5,8 @@ block content
 	h1  Welcome the Plan To Spend SignUp Page
 	h2 Sign up for an account
 	form(action='/signup' method='post')
+		if message.length>0
+			p=message
 		label username
 		input(type='text' name='username' required)
 		br

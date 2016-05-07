@@ -55,3 +55,15 @@
 		mine: [String],
 		loans: [String],
 		savings: [String]}
+		
+// from cats listing
+
+li Housing: #{cat.housing}
+				li Utilities: #{cat.utils}
+				li Car Payment: #{cat.carPayment} 
+				li Car Insurance: #{cat.carIns}
+				li Health Insurance: #{cat.healthIns}
+				li Your Categories: #{cat.mine}
+				li Credit Cards: #{cat.creditCards}
+				li Loans: #{cat.loans}
+				li Savings: #{cat.savings}

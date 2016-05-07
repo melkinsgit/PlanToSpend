@@ -21,7 +21,7 @@ NEED TO HAVE
 	- on submit you search for the array name
 	- adding read size of array and increment from them (after last child)
 	
--
+- don't let anyone use another person's user name
 
 NICE TO HAVE
 - figure out how to get category data entry for arrays - form in form - use javascript for a button that adds a new whatever - look in birds in javascript

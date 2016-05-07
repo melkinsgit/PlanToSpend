@@ -21,10 +21,10 @@ var spendSchema = new Schema ({
 	date: {type : Date, default: Date.now()},
 	payee: String,
 	description: String,
-	budget : {type: SchemaTypes.Double},
-	actual : {type: SchemaTypes.Double},
+	budget : {type: SchemaTypes.Double, default: 0},
+	actual : {type: SchemaTypes.Double, default: 0},
 	category: String,
-	cashFlow: {type: SchemaTypes.Double}
+	cashFlow: {type: SchemaTypes.Double, default: 0}
 });  // end Schema
 
 // mongoose.model turns it into a Spend object

@@ -19,49 +19,19 @@ block content
 
 	form(action="/showCats" method="get")
 	if(userCats.length===0)
-		p You haven't entered any items in your spending plan yet.
+		p You haven't chosen your categories yet.
 	else
 		ul
 			for cat in userCats
 				li Housing: #{cat.housing}
 				li Utilities: #{cat.utils}
-					ul
-						if(cat.utils.length===1 && cat.utils[0]==='')
-							li No utilities
-						else
-							for util in cat.utils
-								li #{util}
 				li Car Payment: #{cat.carPayment} 
 				li Car Insurance: #{cat.carIns}
 				li Health Insurance: #{cat.healthIns}
-				li Your Categories:
-					ul
-						if(cat.mine.length===1 && cat.mine[0]==='')
-							li No categories you defined
-						else
-							for me in cat.mine
-								li #{me}
-				li Credit Cards:
-					ul
-						if(cat.creditCards.length===1 && cat.creditCards[0]==='')
-							li No credit cards
-						else
-							for card in cat.creditCards
-								li #{card}
-				li Loans: 
-					ul
-						if(cat.loans.length===1 && cat.loans[0]==='')
-							li No loans
-						else
-							for loan in cat.loans
-								li #{loan}
-				li Savings:
-					ul
-						if(cat.savings.length===1 && cat.savings[0]==='')
-							li No savings
-						else
-							for saving in cat.savings
-								li #{saving}
+				li Your Categories: #{cat.mine}
+				li Credit Cards: #{cat.creditCards}
+				li Loans: #{cat.loans}
+				li Savings: #{cat.savings}
 			
 	hr
 	footer

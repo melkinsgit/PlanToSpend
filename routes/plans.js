@@ -6,7 +6,11 @@ var Spend = require('../models/spend.js');
 var UserCats = require('../models/userCats.js');
 var User = require('../models/user.js');
 
-/* GET listing page. */
+var netSpend = 0;
+var startCash = 1000;
+
+
+/* GET listing - lists all spending so far with option to delete or update */
 router.get('/listing', function(req, res, next) {
 	
 	var username = req.user.local.username;
@@ -15,61 +19,54 @@ router.get('/listing', function(req, res, next) {
 		if (err) { 
 			return next(err); 
 		}
-		var cFlow1 = 1000;
-		for(var spend in spendDocs){
-			spendDocs[spend].cashFlow.actual = {};
-			if(spendDocs[spend].actual.value==0)
-			{
-				spendDocs[spend].cashFlow.value = cFlow1 + Number(spendDocs[spend].budget.value);
-			}
-			else
-			{
-				spendDocs[spend].cashFlow.value = cFlow1 + Number(spendDocs[spend].actual.value);
-			}
-			cFlow1 = Number(spendDocs[spend].cashFlow.value);
-		}
-		return res.render('listing', { spends: spendDocs, startCash: '1000', error: req.flash('error') });  // returns an array of JSON ojbects type Spend
+		// total the spending, get the values for the listing
+		spendDocs=getCashFlow(spendDocs);
+		// render the listing jade with all the spend records for this user, their starting cash for the year and their net spending for the year
+		return res.render('listing', { spends: spendDocs, startCash: '1000', netSpending: netSpend, error: req.flash('error') });
   });
 });
 
 /* GET enterData page */
 router.get('/enterData', function (req, res, next) {
 	
-	// find the user's categories
-	
+	// get the user name from the request via passport feature
 	var username = req.user.local.username;
-	console.log('should be NAME user is ************************');
-	console.log(username);
 	
-	
-	// var Categories=["Option1", "Option2", "Option3"];
-		// res.render('enterData', {categories: Categories});
-	
+	// find the user's categories
 	UserCats.findOne({'catsUser': username}, function (err, foundUserCats) {
 		if (err) {
           return next(err);    //database error
         }
 		if(!foundUserCats){
-			console.log('did not get a user from ' + username);
+			console.log('did not get categories from ' + username);
+			// ************* decide what I want to happen here
+			//req.flash('error', 'You need to choose categories before you spend.');
+			return res.render('planmain', {message : 'You need to choose categories before you spend.'}); 
 		}
-        // Check to see if there is already a user with that username
-        if (foundUserCats) {
-          console.log('user with that name exists');
-        }
-		// var Categories = user.local.thisUserCats;
-		// var Categories=["Option1", "Option2", "Option3"];
-		var catsToList = JSON.parse(foundUserCats);
 		
-		for (var cat in catsToList){
+		// create an array for the user's categories
+		var catsToList = [];
+		
+		// add everything except id, verison and username fields to the array
+		for (var cat in foundUserCats._doc){
 			console.log('exploring array from found user cats');
-			console.log(catsToList[cat]);
-			//catsToList.push(foundUserCats[cat]);
+			console.log(foundUserCats._doc[cat]);
+			if (foundUserCats._doc[cat] == foundUserCats._doc.__v){
+				console.log('do not add ' + foundUserCats._doc[cat]);
+			}
+			else if (foundUserCats._doc[cat] == foundUserCats._doc.catsUser){
+				console.log('do not add ' + foundUserCats._doc[cat]);
+			}
+			else if (foundUserCats._doc[cat] == foundUserCats._doc._id){
+				console.log('do not add ' + foundUserCats._doc[cat]);
+			}
+			else{
+				catsToList.push(foundUserCats._doc[cat]);
+			}
 		}
-		
-		console.log("trying to id the found user cats");
-		console.log(catsToList);
+		// send the array to the enterData render for category drop down
 		res.render('enterData', {categories: catsToList});
-	});
+	}); // end of find
 }); // end of get
 
 router.post('/enterOneLine', function(req, res, next){
@@ -79,17 +76,16 @@ router.post('/enterOneLine', function(req, res, next){
 	var thisUser = req.user;
 	
 	// these could also be default 0 in the model
-	if (!newSpend.actual){
-		newSpend.actual = {};
-		newSpend.actual.value = '0';
-	}
-	if (!newSpend.budget){
-		newSpend.budget = {};
-		newSpend.budget.value = '0';
-	}
+	// if (!newSpend.actual){
+		// newSpend.actual = {};
+		// newSpend.actual.value = '0';
+	// }
+	// if (!newSpend.budget){
+		// newSpend.budget = {};
+		// newSpend.budget.value = '0';
+	// }
 	if (!newSpend.date){
 		newSpend.date = Date.now();
-		console.log('the date for doc is ' + newSpend.date);
 	}
 	newSpend.cashFlow='0';
 	
@@ -118,12 +114,37 @@ router.post('/enterOneLine', function(req, res, next){
 
 /* GET dataDashboard page */
 router.get('/dataDashboard', function (req, res, next) {
-	res.render('dataDashboard');
+	var username = req.user.local.username;
+
+	Spend.find({ 'spendUser' : username}, function(err, spendDocs){
+		if (err) { return next(err); }
+		spendDocs=getCashFlow(spendDocs);
+		var moneyToPlayWith = netSpend - startCash;
+		return res.render('dataDashboard', {netSpending: netSpend, yearStart: startCash, moneyLeft: moneyToPlayWith});
+	});
 }); // end of post
 
 /* GET enterSpend page */
 router.get('/defineSpend', function (req, res, next) {
-	res.render('defineSpend');
+	res.redirect('/plans/enterData');
 }); // end of post
+
+function getCashFlow(spendDocs){
+		var cFlow1 = startCash;
+		for(var spend in spendDocs){
+			spendDocs[spend].cashFlow.actual = {};
+			if(spendDocs[spend].actual.value==0)
+			{
+				spendDocs[spend].cashFlow.value = cFlow1 + Number(spendDocs[spend].budget.value);
+			}
+			else
+			{
+				spendDocs[spend].cashFlow.value = cFlow1 + Number(spendDocs[spend].actual.value);
+			}
+			cFlow1 = Number(spendDocs[spend].cashFlow.value);
+		}
+		netSpend = cFlow1;
+		return spendDocs
+}
 
 module.exports = router;

@@ -4,9 +4,20 @@ extends layout
 
 block content
 	h1 The Data Dashboard
+	if (netSpending > 0)
+		h2 Your net for the year is #{netSpending}
+	else
+		h2 Your net loss for the year is #{netSpending}
+	h2 You'll need #{yearStart} to start next year
+	if (moneyLeft > 0)
+		h2 That gives you #{moneyLeft} to play with this year.
+		p Now you'll want to click on Do Some Spending and make a plan to spend that money
+	else
+		h2 You need to cover your loss and save money for next year.
+		p Now your goal is to pare down your spending to cover your #{moneyLeft} loss
 	
 	hr
-	footer
+	footer 
 		include navigation
 		form(action='/logout' method='get')
 			input(type="submit" value="Logout")
