@@ -23,13 +23,10 @@ block content
 	else
 		ul
 			for cat in userCats
-				//p using index first #{userCats[cat]}
-				ul 
-					//li 
-						// using index #{userCats[cat]}
+				if (cat === '')
+				else
 					li
 						is #{cat}
-					
 	hr
 	footer
 		include navigation

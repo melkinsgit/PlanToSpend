@@ -45,7 +45,8 @@ var userCatsSchema = new Schema ({
 	income5: String,
 	cell1: String,
 	cell2: String,
-	taxPayment: String
+	tax1: String,
+	tax2: String
 });  // end Schema
 
 // mongoose.model turns it into a Category object

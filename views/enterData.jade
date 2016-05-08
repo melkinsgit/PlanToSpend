@@ -9,12 +9,11 @@ block content
 			label Enter Anticipated Spending Date
 				input(type="date" name="date")
 			label Pick Category
-				if(categories.length === 0)
-					p You haven't picked your categories yet.
-				else
-					select(type="text" name="category")
-						each category in categories
-							option #{category}
+				select(type="text" name="cat")
+					each cat in categories
+						if (cat === '')
+						else
+							option #{cat}
 			label Payee
 				input(type="text" name="payee")
 			label Description
@@ -25,9 +24,6 @@ block content
 			br
 			input(type='text' name='username' hidden)
 			input(type="submit" value="Enter Spend")
-	p
-		form(action='listing' method='get')
-			input(type='submit' value='Show Me My Spending')
 			
 	hr
 	footer
