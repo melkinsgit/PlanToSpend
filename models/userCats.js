@@ -43,6 +43,8 @@ var userCatsSchema = new Schema ({
 	income3: String,
 	income4: String,
 	income5: String,
+	cell1: String,
+	cell2: String,
 	taxPayment: String
 });  // end Schema
 

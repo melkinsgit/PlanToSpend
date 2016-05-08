@@ -12,9 +12,12 @@ block content
 	if (moneyLeft > 0)
 		h2 That gives you #{moneyLeft} to play with this year.
 		p Now you'll want to click on Do Some Spending and make a plan to spend that money
-	else
+	if (moneyLeft < 0)
 		h2 You need to cover your loss and save money for next year.
 		p Now your goal is to pare down your spending to cover your #{moneyLeft} loss
+	if (moneyLeft === 0)
+		h2 No money to play with yet.
+		p Maybe you can find a few places to economize this year
 	
 	hr
 	footer 

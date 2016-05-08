@@ -43,29 +43,8 @@ router.get('/enterData', function (req, res, next) {
 			//req.flash('error', 'You need to choose categories before you spend.');
 			return res.render('planmain', {message : 'You need to choose categories before you spend.'}); 
 		}
-		
-		// create an array for the user's categories
-		var catsToList = [];
-		
-		// add everything except id, verison and username fields to the array
-		for (var cat in foundUserCats._doc){
-			console.log('exploring array from found user cats');
-			console.log(foundUserCats._doc[cat]);
-			if (foundUserCats._doc[cat] == foundUserCats._doc.__v){
-				console.log('do not add ' + foundUserCats._doc[cat]);
-			}
-			else if (foundUserCats._doc[cat] == foundUserCats._doc.catsUser){
-				console.log('do not add ' + foundUserCats._doc[cat]);
-			}
-			else if (foundUserCats._doc[cat] == foundUserCats._doc._id){
-				console.log('do not add ' + foundUserCats._doc[cat]);
-			}
-			else{
-				catsToList.push(foundUserCats._doc[cat]);
-			}
-		}
 		// send the array to the enterData render for category drop down
-		res.render('enterData', {categories: catsToList});
+		res.render('enterData');
 	}); // end of find
 }); // end of get
 
@@ -75,15 +54,6 @@ router.post('/enterOneLine', function(req, res, next){
 	newSpend.spendUser = req.user.local.username;
 	var thisUser = req.user;
 	
-	// these could also be default 0 in the model
-	// if (!newSpend.actual){
-		// newSpend.actual = {};
-		// newSpend.actual.value = '0';
-	// }
-	// if (!newSpend.budget){
-		// newSpend.budget = {};
-		// newSpend.budget.value = '0';
-	// }
 	if (!newSpend.date){
 		newSpend.date = Date.now();
 	}

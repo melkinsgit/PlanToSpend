@@ -17,13 +17,63 @@ router.get('/showCats', function (req, res, next){
 	var username = req.user.local.username;
 	
 	// find the user's categories by identifying the unique user name in the catsUser collection
-	UserCats.find({ 'catsUser' : username}, function(err, catsDocs){
+	UserCats.find({ 'catsUser' : username}, function(err, foundUserCats){
 		if (err) { return next(err); }
-		console.log('trying to show cats');
-		console.log(JSON.stringify(catsDocs));
-		JSONcatsDocs = JSON.stringify(catsDocs);
-
-		return res.render('listCats', { userCats: catsDocs, error: req.flash('error') });  
+		// console.log(JSON.stringify(catsDocs));
+		// JSONcatsDocs = JSON.stringify(catsDocs);
+		// console.log('does it get here');
+		// console.log(catsDocs._docs);
+		
+		console.log('---------------------')
+ 
+ 		var fields = Object.keys(foundUserCats);
+ 		for(var i = 0; i < fields.length; i++) {
+ 				userCatsToShow = UserCats (foundUserCats[fields[i]]);
+				console.log(userCatsToShow.util1);
+			}
+  
+  		console.log('---------------------')
+		
+		var catsArray = [];
+		catsArray.push(userCatsToShow.housing);
+		catsArray.push(userCatsToShow.income1);
+		catsArray.push(userCatsToShow.income2);
+		catsArray.push(userCatsToShow.income3);
+		catsArray.push(userCatsToShow.income4);
+		catsArray.push(userCatsToShow.income5);
+		catsArray.push(userCatsToShow.util1);
+		catsArray.push(userCatsToShow.util2);
+		catsArray.push(userCatsToShow.util3);
+		catsArray.push(userCatsToShow.util4);
+		catsArray.push(userCatsToShow.cell1);
+		catsArray.push(userCatsToShow.cell2);
+		// catsArray.push(userCatsToShow.);
+		// catsArray.push(userCatsToShow.);
+		// catsArray.push(userCatsToShow.);
+		// catsArray.push(userCatsToShow.);
+		// catsArray.push(userCatsToShow.);
+		// catsArray.push(userCatsToShow.);
+		// catsArray.push(userCatsToShow.);
+		// catsArray.push(userCatsToShow.);
+		// catsArray.push(userCatsToShow.);
+		// catsArray.push(userCatsToShow.);
+		// catsArray.push(userCatsToShow.);
+		// catsArray.push(userCatsToShow.);
+		// catsArray.push(userCatsToShow.);
+		// catsArray.push(userCatsToShow.);
+		// catsArray.push(userCatsToShow.);
+		// catsArray.push(userCatsToShow.);
+		// catsArray.push(userCatsToShow.);
+		// catsArray.push(userCatsToShow.);
+		// catsArray.push(userCatsToShow.);
+		// catsArray.push(userCatsToShow.);
+		
+		for (var i =0; i < catsArray.length; i++){
+			console.log(catsArray[i]);
+			console.log('array counter ' + i);
+		}
+		
+		return res.render('listCats', { userCats: catsArray, error: req.flash('error') });  
   });
 });
 
@@ -48,6 +98,8 @@ router.post('/setCats', function (req, res, next){
 			return next(err) ;
 		}
 		res.status (201);
+		console.log('saved usercats');
+		console.log(savedCatSetting);
 		return res.redirect('/cats/showCats');
 	});
 	
@@ -80,5 +132,14 @@ router.post('/addCreditCard',function (req, res, next){
 router.post('/updateCats', function(req, res, next){
 	
 });
+
+function json2array(json){
+    var result = [];
+    var keys1 = Object.keys(json);
+    keys1.forEach(function(key){
+        result.push(json[key]);
+    });
+    return result;
+}
 
 module.exports = router;
