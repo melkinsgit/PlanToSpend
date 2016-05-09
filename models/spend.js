@@ -18,10 +18,10 @@ var SchemaTypes = mongoose.Schema.Types;
 
 var spendSchema = new Schema ({
 	spendUser: String,
-	date: {type : Date, default: Date.now()},
+	date: String,
 	payee: String,
 	description: String,
-	budget : {type: SchemaTypes.Double, default: 0},
+	budget : {type: SchemaTypes.Double},
 	actual : {type: SchemaTypes.Double, default: 0},
 	category: String,
 	cashFlow: {type: SchemaTypes.Double, default: 0}

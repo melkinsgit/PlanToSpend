@@ -6,3 +6,19 @@ body {
 a {
   color: #00B7FF;
 }
+
+.spendingTable tr:nth-child(odd){
+	background: #b8d1f3;
+}
+
+.spendingTable tr:nth-child(even){
+	background: #dae5f4;
+}
+
+.tableOptions tr:nth-child(odd){
+	background: #b8d1f3;
+}
+
+.tableOptions tr:nth-child(even){
+	background: #fff000;
+}

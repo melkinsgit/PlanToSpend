@@ -1,0 +1,8 @@
+// delete jade
+
+						th Delete
+						td
+							form(action='updates/deleteSpend' method='post')
+								input(name='date' value='#{spend.date}' hidden)
+								input(name='payee' value='#{spend.payee}' hidden)
+								input(type='submit' value='Delete')

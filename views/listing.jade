@@ -4,11 +4,16 @@ extends layout
 block content
 	h1 Here's what your spending looks like for the year
 	h2 Your net for the year is #{netSpending}
+	form(action="listingWOptions" method="get")
+		input(type='submit' value='Update a Spending Item')
+	form(action="listingWOptions" method="get")
+		input(type='submit' value='Delete a Spending Item')
+	
 	form(action="/listing" method="get")
-		table
+		table.spendingTable
 			tr
 			if(spends.length===0)
-				p You haven't entered an items in your spending plan yet.
+				p You haven't entered any items in your spending plan yet.
 			else
 				th Date
 				th Payee
@@ -17,7 +22,6 @@ block content
 				th Budget
 				th Actual
 				th CashFlow
-				th Options
 				tr
 					td Starting Balance
 					td
@@ -28,20 +32,13 @@ block content
 					td #{startCash}
 				for spend in spends
 					tr.spendingRow
-						td #{spend.date.toLocaleDateString()}
+						td #{spend.date}
 						td #{spend.payee}
 						td #{spend.description}
 						td #{spend.category} 
 						td #{spend.budget.value}
 						td #{spend.actual.value}
 						td #{spend.cashFlow.value}
-						td
-							form(action='updateSpend' method='post')
-								input(type='submit' value='Update')
-							form(action='deleteSpend' method='post')
-								input(type='submit' value='Delete')
-							//form(action='/doSomething' method='get')
-								//input(type='submit' value='Duplicate')
 									
 	hr
 	footer

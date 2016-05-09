@@ -10,15 +10,20 @@ block content
 		h2 Your net loss for the year is #{netSpending}
 	h2 You'll need #{yearStart} to start next year
 	if (moneyLeft > 0)
-		h2 That gives you #{moneyLeft} to play with this year.
+		h2 That gives you #{moneyLeft} to play with this year
 		p Now you'll want to click on Do Some Spending and make a plan to spend that money
 	if (moneyLeft < 0)
-		h2 You need to cover your loss and save money for next year.
+		h2 You need to cover your loss and save money for next year
 		p Now your goal is to pare down your spending to cover your #{moneyLeft} loss
 	if (moneyLeft === 0)
-		h2 No money to play with yet.
-		p Maybe you can find a few places to economize this year
-	
+		h2 No money to play with this year
+		p Maybe you can find a few places to economize
+	if youWentOver.length>0
+		h2 You went over budget #{youWentOver.length} times
+			h3 Check the following dates in your spending:
+				ul
+					for overage in youWentOver
+						li #{overage}
 	hr
 	footer 
 		include navigation

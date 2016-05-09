@@ -1,0 +1,52 @@
+// listing with delete and update
+extends layout
+
+block content
+	if spends.length===0
+		p You don't have any spending yet, so there is nothing to update yet. Time to Do Some Spending.
+	else
+		table.tableOptions
+			th Current Date
+			th New Date
+			th Payee
+			th Description
+			th Current Category
+			th New Category
+			th Budget
+			th Actual
+			th Update
+			for spend in spends
+				tr.spendingRow
+					td 
+						input(type='text' value='#{spend.date}')
+					td
+						input(type='date' name=newDate)
+					td
+						input(type='text' value='#{spend.payee}' name=newPayee)
+					td
+						input(type='text' value='#{spend.description}' name=newDescription)
+					td 
+						input(type='text' value='#{spend.category}')
+					td
+						select(type="text" name="newCategory")
+							each cat in categories
+								if (cat === '')
+								else
+									option #{cat}
+					td 
+						input(type='text' value='#{spend.budget.value}' size='10px' readonly)
+					td 
+						input(type='text' value='#{spend.actual.value}' size='10px' name=newActual)
+					td
+						form(action='/updates/updateSpend' method='post')
+							input(name='category' value='#{spend.category}' hidden)
+							input(name='actual.value' value='#{spend.actual.value}' hidden)
+							input(name='description' value='#{spend.description}' hidden)
+							input(name='date' value='#{spend.date}' hidden)
+							input(name='payee' value='#{spend.payee}' hidden)
+							input(type='submit' value='Update')
+	hr
+	footer
+		include navigation
+		form(action='/logout' method='get')
+			input(type="submit" value="Logout")

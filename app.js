@@ -17,6 +17,7 @@ var users = require('./routes/users');  // use users to access users route js fi
 var plans = require('./routes/plans');  // use plans to access plans route js file
 var enterData = require('./routes/enterData');  // use enterData to access enterData route js file
 var cats = require('./routes/cats');  // use cats to access cats route js file
+var updates = require('./routes/updates');  // this route will update and delete spends and update categories
 
 var planmain = require('./routes/planmain');  // planmain is a route than handles all the plan main menu items
 
@@ -66,6 +67,9 @@ app.use('/planmain', planmain);
 
 app.use('/cats', isLoggedIn);
 app.use('/cats', cats);
+
+app.use('/updates', isLoggedIn);
+app.use('/updates', updates);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

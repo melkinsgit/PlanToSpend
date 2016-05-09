@@ -1,19 +1,19 @@
 TO DO
 
 NEED TO HAVE
-- figure out how to pass user (then add category to user)
+- figure out how to pass user (then add category to user)  DONE
 - user input errors in enterData - actual and budget
-	- Number - I'll NaN
-	- input type number
-- make dashboard
-- make plan spending page
+	- Number - I'll NaN  DONE
+	- input type number  DONE
+- make dashboard  DONE
+- make plan spending page  DONE
 - clean up look
-- fix Categories
+- fix Categories DONE
 - update spend
 - delete spend
-- add array element in category
-- update category (can include add above)
-- set categories include income
+- add array element in category  CUT
+- update category (can include add above)  FIXED
+- set categories include income  DONE
 
 - button for adding array features
 	- city form jade, data js
@@ -21,7 +21,8 @@ NEED TO HAVE
 	- on submit you search for the array name
 	- adding read size of array and increment from them (after last child)
 	
-- don't let anyone use another person's user name
+- don't let anyone use another person's user name DONE
+- don't let anyone enter a duplicate entry - date and payee are identical DONE
 
 NICE TO HAVE
 - figure out how to get category data entry for arrays - form in form - use javascript for a button that adds a new whatever - look in birds in javascript

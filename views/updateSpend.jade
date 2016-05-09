@@ -1,17 +1,17 @@
-// enter Data
+// udpate Spend jade
 extends layout
 
 block content
-	h1 The enter data page
-	h2 Step 2:  Enter Your Spending Items
+	h1 The Update Page
+	h2 Step 2:  Update Spending Item
 	if message.length>0
 		p Looks like we ran into an error. But it's an easy fix.
 		p #{message}
 	p
-		form(action="enterOneLine" method="post")
-			label Enter Anticipated Spending Date
+		form(action="postUpdate" method="post")
+			label Enter New Spending Date
 				input(type="date" name="date")
-			label Pick Category
+			label Category
 				select(type="text" name="category")
 					each cat in categories
 						if (cat === '')
@@ -22,10 +22,12 @@ block content
 			label Description
 				input(type="text" name="description")
 			br
-			label Budgeted Amount - You won't be changing this, but don't worry! It doesn't have to be perfect.
-				input(type="text" name="budget")
+			label Budgeted Amount - Remember, this can't be changed.
+				input(type="text" name="budget" readonly)
 			br
-			input(type="submit" value="Enter Spend")
+			label Actual Amount
+				input(type="text" name="actual")
+			input(type="submit" value="Update Spend")
 			
 	hr
 	footer

@@ -19,9 +19,7 @@ router.get('/showCats', function (req, res, next){
 	// find the user's categories by identifying the unique user name in the catsUser collection
 	UserCats.findOne({ 'catsUser' : username}, function(err, foundUserCats){
 		if (err) { return next(err); }
-		console.log(foundUserCats);
 		if (!foundUserCats){
-			console.log('did not get categories from ' + username);
 			return res.render('planmain', {message : 'You need to choose categories before you show categories.'}); 
 		}
 		else {
@@ -67,11 +65,6 @@ router.get('/showCats', function (req, res, next){
 			catsArray.push(foundUserCats.mine5);
 			catsArray.push(foundUserCats.tax1);
 			catsArray.push(foundUserCats.tax2);
-			
-			for (var i =0; i < catsArray.length; i++){
-				console.log(catsArray[i]);
-				console.log('array counter ' + i);
-			}
 			
 			return res.render('listCats', { userCats: catsArray, error: req.flash('error') });  
 		}
