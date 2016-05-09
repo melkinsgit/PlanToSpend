@@ -88,6 +88,13 @@ router.post('/updateSpend', function (req, res, next){
 		input(name='date' value='#{spend.date}' hidden)
 		input(name='payee' value='#{spend.payee}' hidden)
 	*/
+	var conditions = {
+		date: req.body.date,
+		category: req.body.category,
+		actual: req.body.actual,
+		description:req.body.description,
+		payee: req.body.payee
+		}
 	
 	// new elements from the req.body
 	var update = {
@@ -97,44 +104,18 @@ router.post('/updateSpend', function (req, res, next){
 		description: req.body.newDescription,
 		category: req.body.newCategory
 		}
-	var conditions = {
-		date: req.body.date,
-		category: req.body.category,
-		actual: req.body.actual,
-		description:req.body.description,
-		payee: req.body.payee
-		}
-	Spend.findOne({'spendUser': thisUser, 'date': req.body.date, 'payee': req.body.payee}, function (err, thatSpend){
-		if (err){
-			return next(err);
-		}
-		else{
-			console.log('found that item');
-			
-			thatSpend.update(conditions, update, function (err, updatedSpend) {
-				console.log('in the spend update call');
-				if (err) {
-					if (err.name == "ValidationError"){
-						req.flash('error', 'Invalid data');
-						return res.redirect('/');
-					}
-					else if (err.code == 11000){
-						req.flash('error', 'An expense for that date and that category with that description already exists.');
-						return res.redirect('/');
-					}
-					else {
-						req.flash('error', 'Invalid data');
-						return res.redirect('/plans/enterData');
-					}
-					// return next(err) ;
+	
+	Spend.update(conditions, update, function (err, updateCount) {
+			console.log('in the spend update call');
+			if (err){
+					req.flash('error', 'Invalid data');
+					return next(err);
 				}
-				console.log('updated spend');
-				console.log(updatedSpend);
-				res.status (201);
-				return res.redirect('/plans/listing');  // redirects are absolute because each post and get is complete
-			});  // end of save
-		}
-	}); // end of find
+			console.log('number updated');
+			console.log(updateCount);
+			res.status (201);
+			return res.redirect('/plans/listing');  // redirects are absolute because each post and get is complete
+	}); // end of update
 });  // end of post
 
 router.post('/deleteSpend', function (req, res, next){
