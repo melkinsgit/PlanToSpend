@@ -167,3 +167,120 @@ input(name='category' value='#{spend.category}' hidden)
 							input(name='description' value='#{spend.description}' hidden)
 							input(name='date' value='#{spend.date}' hidden)
 							input(name='payee' value='#{spend.payee}' hidden)
+							
+// from updates js
+// router.get('/updateSpend', function (req, res, next){
+	// var username = req.user.local.username;
+	// find the user's categories by identifying the unique user name in the catsUser collection
+	// UserCats.findOne({ 'catsUser' : username}, function(err, foundUserCats){
+		// if (err) { return next(err); }
+		// if (!foundUserCats){
+			// return res.render('planmain', {message : 'You need to choose categories before you show categories.'}); 
+		// }
+		// else {
+		// setup the cats array
+		// catsArray = [];
+		// catsArray.push(foundUserCats.housing);
+		// catsArray.push(foundUserCats.income1);
+		// catsArray.push(foundUserCats.income2);
+		// catsArray.push(foundUserCats.income3);
+		// catsArray.push(foundUserCats.income4);
+		// catsArray.push(foundUserCats.income5);
+		// catsArray.push(foundUserCats.util1);
+		// catsArray.push(foundUserCats.util2);
+		// catsArray.push(foundUserCats.util3);
+		// catsArray.push(foundUserCats.util4);
+		// catsArray.push(foundUserCats.cell1);
+		// catsArray.push(foundUserCats.cell2);
+		// catsArray.push(foundUserCats.carPayment1);
+		// catsArray.push(foundUserCats.carPayment2);
+		// catsArray.push(foundUserCats.carIns1);
+		// catsArray.push(foundUserCats.carIns2);
+		// catsArray.push(foundUserCats.carIns3);
+		// catsArray.push(foundUserCats.healthIns);
+		// catsArray.push(foundUserCats.medical1);
+		// catsArray.push(foundUserCats.medical2);
+		// catsArray.push(foundUserCats.dental);
+		// catsArray.push(foundUserCats.creditCard1);
+		// catsArray.push(foundUserCats.creditCard2);
+		// catsArray.push(foundUserCats.creditCard3);
+		// catsArray.push(foundUserCats.creditCard4);
+		// catsArray.push(foundUserCats.loan1);
+		// catsArray.push(foundUserCats.loan2);
+		// catsArray.push(foundUserCats.loan3);
+		// catsArray.push(foundUserCats.loan4);
+		// catsArray.push(foundUserCats.saving1);
+		// catsArray.push(foundUserCats.saving2);
+		// catsArray.push(foundUserCats.saving3);
+		// catsArray.push(foundUserCats.saving4);
+		// catsArray.push(foundUserCats.saving5);
+		// catsArray.push(foundUserCats.mine1);
+		// catsArray.push(foundUserCats.mine2);
+		// catsArray.push(foundUserCats.mine3);
+		// catsArray.push(foundUserCats.mine4);
+		// catsArray.push(foundUserCats.mine5);
+		// catsArray.push(foundUserCats.tax1);
+		// catsArray.push(foundUserCats.tax2);
+		// }
+		// res.render('listingWOptions', {categories: catsArray, message: ''})
+	// });
+// });
+
+
+
+router.get('/deleteSpend', function (req, res, next){
+	var username = req.user.local.username;
+	// find the user's categories by identifying the unique user name in the catsUser collection
+	UserCats.findOne({ 'catsUser' : username}, function(err, foundUserCats){
+		if (err) { return next(err); }
+		if (!foundUserCats){
+			return res.render('planmain', {message : 'You need to choose categories before you show categories.'}); 
+		}
+		else {
+		// setup the cats array
+		catsArray = [];
+		catsArray.push(foundUserCats.housing);
+		catsArray.push(foundUserCats.income1);
+		catsArray.push(foundUserCats.income2);
+		catsArray.push(foundUserCats.income3);
+		catsArray.push(foundUserCats.income4);
+		catsArray.push(foundUserCats.income5);
+		catsArray.push(foundUserCats.util1);
+		catsArray.push(foundUserCats.util2);
+		catsArray.push(foundUserCats.util3);
+		catsArray.push(foundUserCats.util4);
+		catsArray.push(foundUserCats.cell1);
+		catsArray.push(foundUserCats.cell2);
+		catsArray.push(foundUserCats.carPayment1);
+		catsArray.push(foundUserCats.carPayment2);
+		catsArray.push(foundUserCats.carIns1);
+		catsArray.push(foundUserCats.carIns2);
+		catsArray.push(foundUserCats.carIns3);
+		catsArray.push(foundUserCats.healthIns);
+		catsArray.push(foundUserCats.medical1);
+		catsArray.push(foundUserCats.medical2);
+		catsArray.push(foundUserCats.dental);
+		catsArray.push(foundUserCats.creditCard1);
+		catsArray.push(foundUserCats.creditCard2);
+		catsArray.push(foundUserCats.creditCard3);
+		catsArray.push(foundUserCats.creditCard4);
+		catsArray.push(foundUserCats.loan1);
+		catsArray.push(foundUserCats.loan2);
+		catsArray.push(foundUserCats.loan3);
+		catsArray.push(foundUserCats.loan4);
+		catsArray.push(foundUserCats.saving1);
+		catsArray.push(foundUserCats.saving2);
+		catsArray.push(foundUserCats.saving3);
+		catsArray.push(foundUserCats.saving4);
+		catsArray.push(foundUserCats.saving5);
+		catsArray.push(foundUserCats.mine1);
+		catsArray.push(foundUserCats.mine2);
+		catsArray.push(foundUserCats.mine3);
+		catsArray.push(foundUserCats.mine4);
+		catsArray.push(foundUserCats.mine5);
+		catsArray.push(foundUserCats.tax1);
+		catsArray.push(foundUserCats.tax2);
+		}
+		res.render('deleteSpend', {categories: catsArray, message: ''})
+	});
+});

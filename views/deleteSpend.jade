@@ -1,8 +1,36 @@
-// delete jade
+// udpate Spend jade
+extends layout
 
-						th Delete
-						td
-							form(action='updates/deleteSpend' method='post')
-								input(name='date' value='#{spend.date}' hidden)
-								input(name='payee' value='#{spend.payee}' hidden)
-								input(type='submit' value='Delete')
+block content
+	h1 The Update Page
+	h2 Step 2:  Delete Spending Item
+	if message.length>0 
+		p Looks like we ran into an error. But it's an easy fix.
+		p #{message}
+	p
+		form(action="postDelete" method="post")
+			label Enter New Spending Date
+				input(type="date" name="date")
+			label Category
+				select(type="text" name="category")
+					each cat in categories
+						if (cat === '')
+						else
+							option #{cat}
+			label Payee
+				input(type="text" name="payee")
+			label Description
+				input(type="text" name="description")
+			br
+			label Budgeted Amount
+				input(type="text" name="budget" readonly)
+			br
+			label Actual Amount
+				input(type="text" name="actual")
+			input(type="submit" value="Delete Spend")
+			
+	hr
+	footer
+		include navigation
+		form(action='/logout' method='get')
+			input(type="submit" value="Logout")

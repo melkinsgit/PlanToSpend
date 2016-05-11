@@ -17,7 +17,7 @@ var overSpend = [];
 router.get('/listing', function(req, res, next) {
 	
 	var username = req.user.local.username;
-	
+	console.log('user name in listing is ' + username);
 	Spend.find( {spendUser: username } ).sort ({'date' : 1 }).exec(function(err, foundSpends){
 		if (err) { 
 			return next(err); 
@@ -26,9 +26,16 @@ router.get('/listing', function(req, res, next) {
 			return res.render('listing', {message: 'You have not entered any spending items yet. You need to spend some before you can see your spending.'});
 		}
 		else {
-			console.log('it thinks there is a foundSpends');
 			// total the spending, get the values for the listing
+			console.log('the found spends in listing');
+			for (var spend in foundSpends){
+				console.log(foundSpends[spend].budget.value);
+			}
 			spendDocs=getCashFlow(foundSpends);
+			console.log('the found spends in listing after the get cash flow call');
+			for (var spend in spendDocs){
+				console.log(spendDocs[spend].cashFlow.value);
+			}
 			// render the listing jade with all the spend records for this user, their starting cash for the year and their net spending for the year
 			return res.render('listing', { spends: spendDocs, startCash: '1000', netSpending: netSpend, error: req.flash('error') });
 		}
@@ -39,9 +46,8 @@ router.get('/listing', function(req, res, next) {
 router.get('/listingWOptions', function(req, res, next) {
 	
 	var username = req.user.local.username;
-	console.log('username is ' + username);
 	
-	Spend.find( { } ).sort ({'date' : 1 }).exec(function(err, spendDocs){
+	Spend.find( { 'spendUser': username } ).sort ({'date' : 1 }).exec(function(err, spendDocs){
 		if (err) { 
 			return next(err); 
 		}
@@ -103,6 +109,77 @@ router.get('/listingWOptions', function(req, res, next) {
 			// render the listing jade with all the spend records for this user, their starting cash for the year and their net spending for the year
 			console.log('should be about to render');
 			return res.render('listingWOptions', { spends: spendDocs, startCash: '1000', netSpending: netSpend, error: req.flash('error') , categories: catsArray});
+		}
+		});
+	});
+});
+
+/* GET listing with options */
+router.get('/listingWDelete', function(req, res, next) {
+	
+	var username = req.user.local.username;
+	
+	Spend.find( { } ).sort ({'date' : 1 }).exec(function(err, spendDocs){
+		if (err) { 
+			return next(err); 
+		}
+		
+		UserCats.findOne({'catsUser': username}, function (err, foundUserCats) {
+			if (err) {
+			  return next(err);    //database error
+			}
+			if(!foundUserCats){
+				console.log('did not get categories from ' + username);
+				return res.render('planmain', {message : 'You need to choose categories before you spend.'}); 
+			}
+			else {
+			// total the spending, get the values for the listing
+			spendDocs=getCashFlow(spendDocs);	
+			
+			// set the cats array
+			catsArray.push(foundUserCats.housing);
+			catsArray.push(foundUserCats.income1);
+			catsArray.push(foundUserCats.income2);
+			catsArray.push(foundUserCats.income3);
+			catsArray.push(foundUserCats.income4);
+			catsArray.push(foundUserCats.income5);
+			catsArray.push(foundUserCats.util1);
+			catsArray.push(foundUserCats.util2);
+			catsArray.push(foundUserCats.util3);
+			catsArray.push(foundUserCats.util4);
+			catsArray.push(foundUserCats.cell1);
+			catsArray.push(foundUserCats.cell2);
+			catsArray.push(foundUserCats.carPayment1);
+			catsArray.push(foundUserCats.carPayment2);
+			catsArray.push(foundUserCats.carIns1);
+			catsArray.push(foundUserCats.carIns2);
+			catsArray.push(foundUserCats.carIns3);
+			catsArray.push(foundUserCats.healthIns);
+			catsArray.push(foundUserCats.medical1);
+			catsArray.push(foundUserCats.medical2);
+			catsArray.push(foundUserCats.dental);
+			catsArray.push(foundUserCats.creditCard1);
+			catsArray.push(foundUserCats.creditCard2);
+			catsArray.push(foundUserCats.creditCard3);
+			catsArray.push(foundUserCats.creditCard4);
+			catsArray.push(foundUserCats.loan1);
+			catsArray.push(foundUserCats.loan2);
+			catsArray.push(foundUserCats.loan3);
+			catsArray.push(foundUserCats.loan4);
+			catsArray.push(foundUserCats.saving1);
+			catsArray.push(foundUserCats.saving2);
+			catsArray.push(foundUserCats.saving3);
+			catsArray.push(foundUserCats.saving4);
+			catsArray.push(foundUserCats.saving5);
+			catsArray.push(foundUserCats.mine1);
+			catsArray.push(foundUserCats.mine2);
+			catsArray.push(foundUserCats.mine3);
+			catsArray.push(foundUserCats.mine4);
+			catsArray.push(foundUserCats.mine5);
+			catsArray.push(foundUserCats.tax1);
+			catsArray.push(foundUserCats.tax2);
+			// render the listing jade with all the spend records for this user, their starting cash for the year and their net spending for the year
+			return res.render('listingWDelete', { spends: spendDocs, startCash: '1000', netSpending: netSpend, error: req.flash('error') , categories: catsArray});
 		}
 		});
 	});
@@ -254,25 +331,33 @@ router.post('/enterOneLine', function(req, res, next){
 /* GET dataDashboard page */
 router.get('/dataDashboard', function (req, res, next) {
 	var username = req.user.local.username;
-
-	Spend.find({ 'spendUser' : username}, function(err, spendDocs){
+	Spend.find({ 'spendUser' : username}).sort({'date' : 1 }).exec(function(err, spendDocs){
 		if (err) { return next(err); }
+		console.log('the found spends in dash');
+		for (var spend in spendDocs){
+			console.log(spendDocs[spend].cashFlow.value + ' ' + spendDocs[spend].budget.value);
+		}
 		spendDocs=getCashFlow(spendDocs);
+		console.log('the found spends in dash after call');
+		for (var spend in spendDocs){
+			console.log(spendDocs[spend].cashFlow.value);
+		}
+		console.log('overage after fn call');
 		for (var overage in overSpend){
-			console.log('overage after fn call');
 			console.log(overSpend[overage]);
 		}
 		var moneyToPlayWith = netSpend - startCash;
 		return res.render('dataDashboard', {netSpending: netSpend, yearStart: startCash, moneyLeft: moneyToPlayWith, youWentOver : overSpend});
 	});
-}); // end of post
+}); // end of get
 
 /* GET enterSpend page */
-router.get('/defineSpend', function (req, res, next) {
-	res.redirect('/plans/enterData');
-}); // end of post
+// router.get('/defineSpend', function (req, res, next) {
+	// res.redirect('/plans/enterData');
+// }); // end of post
 
 function getCashFlow(spendDocs){
+	console.log('in get cash flow');
 		var cFlow1 = startCash;
 		for(var spend in spendDocs){
 			spendDocs[spend].cashFlow.actual = {};
@@ -293,11 +378,16 @@ function getCashFlow(spendDocs){
 		for(var spend in spendDocs){
 			if (spendDocs[spend].cashFlow.value < 0 && inTheRed == false){
 				overSpend.push('Cash flow in the red ' + spendDocs[spend].date);
+				console.log('Cash flow in the red ' + spendDocs[spend].date);
 				inTheRed = true;
 			}
 			if (spendDocs[spend].cashFlow.value > 0){
 				inTheRed = false;
 			}
+		}
+		console.log('overage in fn before return');
+		for (var overage in overSpend){
+			console.log(overSpend[overage]);
 		}
 		return spendDocs
 }

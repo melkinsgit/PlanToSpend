@@ -1,10 +1,12 @@
-// listing with update
+// delete jade
+
+// listing with delete
 extends layout
 
 block content
-	h2 Update A Spending Item
+	h2 Delete A Spending Item
 	if spends.length===0
-		p You don't have any spending yet, so there is nothing to update yet. Time to Do Some Spending.
+		p You don't have any spending yet, so there is nothing to delete yet. Time to Do Some Spending.
 	else
 		table.tableOptions
 			th Current Date
@@ -18,7 +20,7 @@ block content
 			th Update
 			for spend in spends
 				tr.spendingRow
-					form(action='/updates/updateSpend' method='post')
+					form(action='/updates/deleteSpend' method='post')
 						input(type='hidden' name='spendId' value='#{spend._id}')
 						td 
 							input(type='text' value='#{spend.date}' name='oldDate')
@@ -41,7 +43,7 @@ block content
 						td 
 							input(type='text' value='#{spend.actual.value}' size='10px' name='newActual')
 						td
-							input(type='submit' value='Update')
+							input(type='submit' value='Delete')
 	hr
 	footer
 		include navigation
