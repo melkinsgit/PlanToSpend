@@ -5,21 +5,22 @@ block content
 	if spends.length===0
 		p You don't have any spending yet, so there is nothing to update yet. Time to Do Some Spending.
 	else
-		form(action='/updates/updateSpend' method='post')
-			table.tableOptions
-				th Current Date
-				th New Date
-				th Payee
-				th Description
-				th Current Category
-				th New Category
-				th Budget
-				th Actual
-				th Update
-				for spend in spends
-					tr.spendingRow
+		table.tableOptions
+			th Current Date
+			th New Date
+			th Payee
+			th Description
+			th Current Category
+			th New Category
+			th Budget
+			th Actual
+			th Update
+			for spend in spends
+				tr.spendingRow
+					form(action='/updates/updateSpend' method='post')
+						input(type='hidden' name='spendId' value='#{spend._id}')
 						td 
-							input(type='text' value='#{spend.date}')
+							input(type='text' value='#{spend.date}' name='oldDate')
 						td
 							input(type='date' name='newDate')
 						td
@@ -39,11 +40,6 @@ block content
 						td 
 							input(type='text' value='#{spend.actual.value}' size='10px' name='newActual')
 						td
-							input(name='category' value='#{spend.category}' hidden)
-							input(name='actual.value' value='#{spend.actual.value}' hidden)
-							input(name='description' value='#{spend.description}' hidden)
-							input(name='date' value='#{spend.date}' hidden)
-							input(name='payee' value='#{spend.payee}' hidden)
 							input(type='submit' value='Update')
 	hr
 	footer

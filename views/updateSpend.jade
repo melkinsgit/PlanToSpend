@@ -4,7 +4,7 @@ extends layout
 block content
 	h1 The Update Page
 	h2 Step 2:  Update Spending Item
-	if message.length>0
+	if message.length>0 
 		p Looks like we ran into an error. But it's an easy fix.
 		p #{message}
 	p
@@ -22,7 +22,7 @@ block content
 			label Description
 				input(type="text" name="description")
 			br
-			label Budgeted Amount - Remember, this can't be changed.
+			label Budgeted Amount
 				input(type="text" name="budget" readonly)
 			br
 			label Actual Amount

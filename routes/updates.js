@@ -12,7 +12,6 @@ var catsArray;
 
 router.get('/updateSpend', function (req, res, next){
 	var username = req.user.local.username;
-	
 	// find the user's categories by identifying the unique user name in the catsUser collection
 	UserCats.findOne({ 'catsUser' : username}, function(err, foundUserCats){
 		if (err) { return next(err); }
@@ -80,6 +79,7 @@ router.post('/updateSpend', function (req, res, next){
 	var thisUser = req.user.local.username;
 	console.log('the req body for the update is');
 	console.log(req.body);
+	
 	// now save the complete object
 	/* Old elements from the req.body:
 		input(name='category' value='#{spend.category}' hidden)
@@ -88,13 +88,23 @@ router.post('/updateSpend', function (req, res, next){
 		input(name='date' value='#{spend.date}' hidden)
 		input(name='payee' value='#{spend.payee}' hidden)
 	*/
-	var conditions = {
-		date: req.body.date,
-		category: req.body.category,
-		actual: req.body.actual,
-		description:req.body.description,
-		payee: req.body.payee
-		}
+	
+	
+	// keep the old date if the user doesn't enter a new date
+	if (req.body.newDate == ''){
+		var today = new Date();
+		var newYear = today.getUTCFullYear();
+		var newMonth = pad2(today.getUTCMonth() + 1);
+		var newDate = today.getUTCDate();
+		req.body.newDate = req.body.oldDate;
+		// (newMonth + '/' + newDate + '/' + newYear);
+	}
+	else{
+		var datePieces = req.body.newDate.split('-');
+		req.body.newDate = (datePieces[1] + '/' + datePieces[2] + '/' + datePieces[0]);
+		console.log('there was a date entered');
+		console.log('the new spend date is ' + req.body.newDate);
+	}
 	
 	// new elements from the req.body
 	var update = {
@@ -104,8 +114,8 @@ router.post('/updateSpend', function (req, res, next){
 		description: req.body.newDescription,
 		category: req.body.newCategory
 		}
-	
-	Spend.update(conditions, update, function (err, updateCount) {
+		
+	Spend.findOneAndUpdate({'_id': req.body.spendId}, update, function (err, updateCount) {
 			console.log('in the spend update call');
 			if (err){
 					req.flash('error', 'Invalid data');
@@ -122,5 +132,9 @@ router.post('/deleteSpend', function (req, res, next){
 	console.log('delete entry');
 	console.log(req.body);
 });
+
+function pad2(number) {
+   return (number < 10 ? '0' : '') + number
+}
 
 module.exports = router;

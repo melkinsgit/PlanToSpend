@@ -204,13 +204,13 @@ router.post('/enterOneLine', function(req, res, next){
 	if (req.body.date == ''){
 		var today = new Date();
 		var newYear = today.getUTCFullYear();
-		var newMonth = today.getUTCMonth() + 1;
+		var newMonth = pad2(today.getUTCMonth() + 1);
 		var newDate = today.getUTCDate();
 		newSpend.date = (newMonth + '/' + newDate + '/' + newYear);
 		console.log(newSpend.date);
 	}
 	else{
-		var datePieces = req.body.date.split('/');
+		var datePieces = req.body.date.split('-');
 		newSpend.date = (datePieces[1] + '/' + datePieces[2] + '/' + datePieces[0]);
 		console.log('there was a date entered');
 		console.log('the new spend date is ' + newSpend.date);
@@ -300,6 +300,10 @@ function getCashFlow(spendDocs){
 			}
 		}
 		return spendDocs
+}
+
+function pad2(number) {
+   return (number < 10 ? '0' : '') + number
 }
 
 module.exports = router;

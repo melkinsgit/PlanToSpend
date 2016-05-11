@@ -158,3 +158,12 @@ if(categories.length==0)
 					
 						each category in categories
 							is #{category}
+							
+// pulled from listingWOptions
+
+
+input(name='category' value='#{spend.category}' hidden)
+							input(name='actual.value' value='#{spend.actual.value}' hidden)
+							input(name='description' value='#{spend.description}' hidden)
+							input(name='date' value='#{spend.date}' hidden)
+							input(name='payee' value='#{spend.payee}' hidden)
