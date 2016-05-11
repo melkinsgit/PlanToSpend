@@ -1,0 +1,61 @@
+{"_id":{"$oid":"573327183f61d59c0a6e9ef1"},"date":"01/01/2016","description":"","payee":"my employer","category":"ME Paycheck","budget":"800.00","spendUser":"margaret","cashFlow":0,"actual":0,"__v":0}
+{"_id":{"$oid":"5733272a3f61d59c0a6e9ef2"},"date":"01/15/2016","description":"","payee":"my employer","category":"ME Paycheck","budget":"800","spendUser":"margaret","cashFlow":0,"actual":0,"__v":0}
+{"_id":{"$oid":"5733273c3f61d59c0a6e9ef3"},"date":"02/01/2016","description":"","payee":"my employer","category":"ME Paycheck","budget":"800.00","spendUser":"margaret","cashFlow":0,"actual":0,"__v":0}
+{"_id":{"$oid":"5733274c3f61d59c0a6e9ef4"},"date":"02/15/2016","description":"","payee":"my employer","category":"ME Paycheck","budget":"800.00","spendUser":"margaret","cashFlow":0,"actual":0.0,"__v":0}
+{"_id":{"$oid":"5733275f3f61d59c0a6e9ef6"},"date":"03/01/2016","description":"","payee":"my employer","category":"ME Paycheck","budget":"800.00","spendUser":"margaret","cashFlow":0,"actual":0,"__v":0}
+{"_id":{"$oid":"5733276f3f61d59c0a6e9ef7"},"date":"03/15/2016","description":"","payee":"my employer","category":"ME Paycheck","budget":"800.00","spendUser":"margaret","cashFlow":0,"actual":0,"__v":0}
+{"_id":{"$oid":"57332e8c548b042c1b0ea84b"},"date":"04/01/2016","description":"regular paycheck","payee":"my employer","category":"ME Paycheck","budget":"800.00","spendUser":"margaret","cashFlow":0,"actual":0,"__v":0}
+{"_id":{"$oid":"57332e9b548b042c1b0ea84c"},"date":"04/15/2016","description":"","payee":"my employer","category":"ME Paycheck","budget":"800.00","spendUser":"margaret","cashFlow":0,"actual":0,"__v":0}
+{"_id":{"$oid":"57332eaa548b042c1b0ea84d"},"date":"05/02/2016","description":"","payee":"my employer","category":"ME Paycheck","budget":"800","spendUser":"margaret","cashFlow":0,"actual":0,"__v":0}
+{"_id":{"$oid":"57332ec8548b042c1b0ea84e"},"date":"05/16/2016","description":"","payee":"my employer","category":"ME Paycheck","budget":"800","spendUser":"margaret","cashFlow":0,"actual":0,"__v":0}
+{"_id":{"$oid":"57332ed5548b042c1b0ea84f"},"date":"06/01/2016","description":"","payee":"my employer","category":"ME Paycheck","budget":"800","spendUser":"margaret","cashFlow":0,"actual":0,"__v":0}
+{"_id":{"$oid":"57332ee5548b042c1b0ea850"},"date":"06/15/2016","description":"","payee":"my employer","category":"ME Paycheck","budget":"800","spendUser":"margaret","cashFlow":0,"actual":0,"__v":0}
+{"_id":{"$oid":"57332f03548b042c1b0ea851"},"date":"07/01/2016","description":"","payee":"my employer","category":"ME Paycheck","budget":"800","spendUser":"margaret","cashFlow":0,"actual":0,"__v":0}
+{"_id":{"$oid":"57332f0e548b042c1b0ea852"},"date":"07/15/2016","description":"","payee":"my employer","category":"ME Paycheck","budget":"800","spendUser":"margaret","cashFlow":0,"actual":0,"__v":0}
+{"_id":{"$oid":"57332f1b548b042c1b0ea853"},"date":"08/01/2016","description":"","payee":"my employer","category":"ME Paycheck","budget":"800","spendUser":"margaret","cashFlow":0,"actual":0,"__v":0}
+{"_id":{"$oid":"57332f27548b042c1b0ea854"},"date":"08/15/2016","description":"","payee":"my employer","category":"ME Paycheck","budget":"800","spendUser":"margaret","cashFlow":0,"actual":0,"__v":0}
+{"_id":{"$oid":"57332f33548b042c1b0ea855"},"date":"09/01/2016","description":"","payee":"my employer","category":"ME Paycheck","budget":"800","spendUser":"margaret","cashFlow":0,"actual":0,"__v":0}
+{"_id":{"$oid":"57332f43548b042c1b0ea856"},"date":"09/15/2016","description":"","payee":"my employer","category":"ME Paycheck","budget":"800","spendUser":"margaret","cashFlow":0,"actual":0,"__v":0}
+{"_id":{"$oid":"57332f59548b042c1b0ea857"},"date":"10/03/2016","description":"extra for OT","payee":"my employer","category":"ME Paycheck","budget":"900","spendUser":"margaret","cashFlow":0,"actual":0,"__v":0}
+{"_id":{"$oid":"57332f66548b042c1b0ea858"},"date":"10/17/2016","description":"regular paycheck","payee":"my employer","category":"ME Paycheck","budget":"800","spendUser":"margaret","cashFlow":0,"actual":0,"__v":0}
+{"_id":{"$oid":"57332f7a548b042c1b0ea859"},"date":"11/01/2016","description":"","payee":"my employer","category":"ME Paycheck","budget":"800","spendUser":"margaret","cashFlow":0,"actual":0,"__v":0}
+{"_id":{"$oid":"57332f89548b042c1b0ea85a"},"date":"11/15/2016","description":"","payee":"my employer","category":"ME Paycheck","budget":"800","spendUser":"margaret","cashFlow":0,"actual":0,"__v":0}
+{"_id":{"$oid":"57332f97548b042c1b0ea85c"},"date":"12/01/2016","description":"","payee":"my employer","category":"ME Paycheck","budget":"800","spendUser":"margaret","cashFlow":0,"actual":0,"__v":0}
+{"_id":{"$oid":"57332fa9548b042c1b0ea85d"},"date":"12/12/2016","description":"Holiday bonus","payee":"my employer","category":"ME Paycheck","budget":"500","spendUser":"margaret","cashFlow":0,"actual":0,"__v":0}
+{"_id":{"$oid":"57332fba548b042c1b0ea85e"},"date":"12/30/2016","description":"","payee":"my employer","category":"ME Paycheck","budget":"800","spendUser":"margaret","cashFlow":0,"actual":0,"__v":0}
+{"_id":{"$oid":"5733315d3eca36f014086443"},"date":"01/13/2016","description":"","payee":"","category":"Electric","budget":"-80","spendUser":"margaret","cashFlow":0,"actual":0,"__v":0}
+{"_id":{"$oid":"573331683eca36f014086444"},"date":"02/12/2016","description":"","payee":"power co","category":"Electric","budget":"-80","spendUser":"margaret","cashFlow":0,"actual":0,"__v":0}
+{"_id":{"$oid":"573331723eca36f014086445"},"date":"03/11/2016","description":"","payee":"power co","category":"Power","budget":"-80","spendUser":"margaret","cashFlow":0,"actual":0,"__v":0}
+{"_id":{"$oid":"5733317d3eca36f014086446"},"date":"04/13/2016","description":"","payee":"power co","category":"Power","budget":"-80","spendUser":"margaret","cashFlow":0,"actual":0,"__v":0}
+{"_id":{"$oid":"573331893eca36f014086447"},"date":"05/12/2016","description":"","payee":"power co","category":"Electric","budget":"-80","spendUser":"margaret","cashFlow":0,"actual":0,"__v":0}
+{"_id":{"$oid":"5733319b3eca36f014086448"},"date":"06/13/2016","description":"","payee":"power co","category":"Electric","budget":"-80","spendUser":"margaret","cashFlow":0,"actual":0,"__v":0}
+{"_id":{"$oid":"573331a43eca36f014086449"},"date":"07/13/2016","description":"","payee":"power co","category":"Electric","budget":"-80","spendUser":"margaret","cashFlow":0,"actual":0,"__v":0}
+{"_id":{"$oid":"573331ae3eca36f01408644a"},"date":"08/12/2016","description":"","payee":"power co","category":"Electric","budget":"-80","spendUser":"margaret","cashFlow":0,"actual":0,"__v":0}
+{"_id":{"$oid":"573331bd3eca36f01408644b"},"date":"09/12/2016","description":"","payee":"power co","category":"Electric","budget":"-80","spendUser":"margaret","cashFlow":0,"actual":0,"__v":0}
+{"_id":{"$oid":"57333af5632ddb240f7c1173"},"date":"01/20/2016","description":"","payee":"","category":"Honda payment","budget":"-150","spendUser":"margaret","cashFlow":0,"actual":0,"__v":0}
+{"_id":{"$oid":"57333b04632ddb240f7c1174"},"date":"05/11/2016","description":"","payee":"","category":"Honda payment","budget":"-150","spendUser":"margaret","cashFlow":0,"actual":0,"__v":0}
+{"_id":{"$oid":"57333b15632ddb240f7c1175"},"date":"03/18/2016","description":"","payee":"","category":"Honda payment","budget":"-150","spendUser":"margaret","cashFlow":0,"actual":0,"__v":0}
+{"_id":{"$oid":"57333b72632ddb240f7c1176"},"date":"02/19/2016","description":"","payee":"","category":"Honda payment","budget":"-150","spendUser":"margaret","cashFlow":0,"actual":0,"__v":0}
+{"_id":{"$oid":"57333cb3e9476b2413a459c7"},"date":"04/20/2016","description":"","payee":"","category":"Honda payment","budget":"-150","spendUser":"margaret","cashFlow":0,"actual":0,"__v":0}
+{"_id":{"$oid":"57333cc2e9476b2413a459c8"},"date":"06/20/2016","description":"","payee":"","category":"Honda payment","budget":"-150","spendUser":"margaret","cashFlow":0,"actual":0,"__v":0}
+{"_id":{"$oid":"57333ccde9476b2413a459c9"},"date":"07/20/2016","description":"","payee":"","category":"Honda payment","budget":"-150","spendUser":"margaret","cashFlow":0,"actual":0,"__v":0}
+{"_id":{"$oid":"57333ce1e9476b2413a459cb"},"date":"08/19/2016","description":"","payee":"","category":"Honda payment","budget":"-150","spendUser":"margaret","cashFlow":0,"actual":0,"__v":0}
+{"_id":{"$oid":"57333cebe9476b2413a459cc"},"date":"09/20/2016","description":"","payee":"","category":"Honda payment","budget":"-150","spendUser":"margaret","cashFlow":0,"actual":0,"__v":0}
+{"_id":{"$oid":"57333cf9e9476b2413a459cd"},"date":"10/20/2016","description":"","payee":"","category":"Honda payment","budget":"-150","spendUser":"margaret","cashFlow":0,"actual":0,"__v":0}
+{"_id":{"$oid":"57333d08e9476b2413a459ce"},"date":"11/18/2016","description":"","payee":"","category":"Honda payment","budget":"-150","spendUser":"margaret","cashFlow":0,"actual":0,"__v":0}
+{"_id":{"$oid":"57333d16e9476b2413a459cf"},"date":"12/20/2016","description":"","payee":"","category":"Honda payment","budget":"-150","spendUser":"margaret","cashFlow":0,"actual":0,"__v":0}
+{"_id":{"$oid":"57333e8de9476b2413a459d0"},"date":"01/05/2016","description":"","payee":"","category":"mortgage","budget":"-800","spendUser":"margaret","cashFlow":0,"actual":0,"__v":0}
+{"_id":{"$oid":"57333eade9476b2413a459d2"},"date":"02/05/2016","description":"","payee":"","category":"mortgage","budget":"-800","spendUser":"margaret","cashFlow":0,"actual":0,"__v":0}
+{"_id":{"$oid":"57333eb8e9476b2413a459d3"},"date":"03/04/2016","description":"","payee":"","category":"mortgage","budget":"-800","spendUser":"margaret","cashFlow":0,"actual":0,"__v":0}
+{"_id":{"$oid":"57333ec0e9476b2413a459d4"},"date":"04/05/2016","description":"","payee":"","category":"mortgage","budget":"-800","spendUser":"margaret","cashFlow":0,"actual":0,"__v":0}
+{"_id":{"$oid":"57333ecee9476b2413a459d5"},"date":"05/05/2016","description":"","payee":"","category":"mortgage","budget":"-800","spendUser":"margaret","cashFlow":0,"actual":0,"__v":0}
+{"_id":{"$oid":"57333ef9e9476b2413a459d6"},"date":"06/03/2016","description":"","payee":"","category":"mortgage","budget":"-800","spendUser":"margaret","cashFlow":0,"actual":0,"__v":0}
+{"_id":{"$oid":"57333f06e9476b2413a459d7"},"date":"07/05/2016","description":"","payee":"","category":"mortgage","budget":"-800","spendUser":"margaret","cashFlow":0,"actual":0,"__v":0}
+{"_id":{"$oid":"57333f0fe9476b2413a459d8"},"date":"08/05/2016","description":"","payee":"","category":"mortgage","budget":"-800","spendUser":"margaret","cashFlow":0,"actual":0,"__v":0}
+{"_id":{"$oid":"57333f16e9476b2413a459d9"},"date":"09/05/2016","description":"","payee":"","category":"mortgage","budget":"-800","spendUser":"margaret","cashFlow":0,"actual":0,"__v":0}
+{"_id":{"$oid":"57333f1fe9476b2413a459da"},"date":"10/05/2016","description":"","payee":"","category":"mortgage","budget":"-800","spendUser":"margaret","cashFlow":0,"actual":0,"__v":0}
+{"_id":{"$oid":"57333f28e9476b2413a459db"},"date":"11/04/2016","description":"","payee":"","category":"mortgage","budget":"-800","spendUser":"margaret","cashFlow":0,"actual":0,"__v":0}
+{"_id":{"$oid":"57333f2fe9476b2413a459dc"},"date":"12/05/2016","description":"","payee":"","category":"mortgage","budget":"-800","spendUser":"margaret","cashFlow":0,"actual":0,"__v":0}
+{"_id":{"$oid":"57333f6ee9476b2413a459dd"},"date":"01/14/2016","description":"","payee":"","category":"Family VISA","budget":"-900","spendUser":"margaret","cashFlow":0,"actual":0,"__v":0}
+{"_id":{"$oid":"57333f7ae9476b2413a459de"},"date":"02/12/2016","description":"","payee":"","category":"Family VISA","budget":"-900","spendUser":"margaret","cashFlow":0,"actual":0,"__v":0}
+{"_id":{"$oid":"57333f85e9476b2413a459df"},"date":"03/14/2016","description":"","payee":"","category":"Family VISA","budget":"-900","spendUser":"margaret","cashFlow":0,"actual":0,"__v":0}
